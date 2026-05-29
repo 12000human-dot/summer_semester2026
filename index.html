@@ -513,9 +513,9 @@ body {
 
       <!-- 필터 -->
       <div class="course-filters">
-        <input class="course-search" type="search" id="srch" placeholder="🔍  학과명, 과목명, 교강사 검색..." oninput="fc()" autocomplete="off">
+        <input class="course-search" type="search" id="srch" placeholder="🔍  학과명, 과목명, 교강사 검색..." oninput="if(listOpen)fc()" autocomplete="off">
         <div class="filter-row">
-          <select class="course-select" id="fdept" onchange="fc()">
+          <select class="course-select" id="fdept" onchange="if(listOpen)fc()">
             <option value="">전체 학과</option>
             <option>뇌기반상담심리학과</option>
             <option>뇌기반감정코칭학과</option>
@@ -533,7 +533,7 @@ body {
             <option>교양학부</option>
             <option>연계전공</option>
           </select>
-          <select class="course-select" id="ftype" onchange="fc()">
+          <select class="course-select" id="ftype" onchange="if(listOpen)fc()">
             <option value="">전체 이수구분</option>
             <option>전공필수</option>
             <option>전공선택</option>
@@ -542,23 +542,34 @@ body {
           </select>
         </div>
       </div>
-      <div class="course-count" id="cnt"></div>
+      <!-- 토글 버튼 -->
+      <button id="toggleBtn" onclick="toggleList()"
+        style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;background:var(--blue-bg);color:var(--primary);border:1.5px solid #bfd4f7;border-radius:10px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;">
+        <span id="toggleIcon">📋</span>
+        <span id="toggleTxt">전체 과목 목록 보기</span>
+        <span id="toggleArrow" style="margin-left:auto;font-size:12px;">▼</span>
+      </button>
 
-      <!-- 모바일: 카드형 -->
-      <div class="course-cards" id="cards"></div>
-      <div class="no-result" id="noRes">검색 결과가 없습니다.</div>
+      <!-- 과목 목록 (기본 숨김) -->
+      <div id="courseList" style="display:none;margin-top:12px;">
+        <div class="course-count" id="cnt"></div>
 
-      <!-- 데스크탑: 테이블형 -->
-      <div class="course-table-wrap" style="display:none;">
-        <table class="std-table" id="ctbl">
-          <thead>
-            <tr>
-              <th>개설학과</th><th>학년</th><th>이수구분</th>
-              <th>과목명</th><th>교과목코드</th><th>교강사</th><th>학점</th>
-            </tr>
-          </thead>
-          <tbody id="ctbody"></tbody>
-        </table>
+        <!-- 모바일: 카드형 -->
+        <div class="course-cards" id="cards"></div>
+        <div class="no-result" id="noRes">검색 결과가 없습니다.</div>
+
+        <!-- 데스크탑: 테이블형 -->
+        <div class="course-table-wrap" style="display:none;">
+          <table class="std-table" id="ctbl">
+            <thead>
+              <tr>
+                <th>개설학과</th><th>학년</th><th>이수구분</th>
+                <th>과목명</th><th>교과목코드</th><th>교강사</th><th>학점</th>
+              </tr>
+            </thead>
+            <tbody id="ctbody"></tbody>
+          </table>
+        </div>
       </div>
 
     </div>
@@ -985,7 +996,30 @@ function fc() {
   document.getElementById('noRes').style.display = filtered.length === 0 ? 'block' : 'none';
 }
 
-fc(); // 초기 렌더
+let listOpen = false;
+function toggleList() {
+  listOpen = !listOpen;
+  const el = document.getElementById('courseList');
+  const btn = document.getElementById('toggleBtn');
+  const txt = document.getElementById('toggleTxt');
+  const arrow = document.getElementById('toggleArrow');
+  if (listOpen) {
+    el.style.display = 'block';
+    btn.style.background = 'var(--primary)';
+    btn.style.color = '#fff';
+    btn.style.borderColor = 'var(--primary)';
+    txt.textContent = '과목 목록 닫기';
+    arrow.textContent = '▲';
+    fc();
+  } else {
+    el.style.display = 'none';
+    btn.style.background = 'var(--blue-bg)';
+    btn.style.color = 'var(--primary)';
+    btn.style.borderColor = '#bfd4f7';
+    txt.textContent = '전체 과목 목록 보기';
+    arrow.textContent = '▼';
+  }
+}
 </script>
 </body>
 </html>
