@@ -511,36 +511,33 @@ body {
     </div>
     <div class="section-body">
 
-      <!-- 필터 -->
-      <div class="course-filters">
-        <input class="course-search" type="search" id="srch" placeholder="🔍  학과명, 과목명, 교강사 검색..." oninput="if(listOpen)fc()" autocomplete="off">
-        <div class="filter-row">
-          <select class="course-select" id="fdept" onchange="if(listOpen)fc()">
-            <option value="">전체 학과</option>
-            <option>뇌기반상담심리학과</option>
-            <option>뇌기반감정코칭학과</option>
-            <option>명상치료학과</option>
-            <option>뇌교육학과</option>
-            <option>브레인트레이닝학과</option>
-            <option>방송연예학과</option>
-            <option>미디어콘텐츠학과</option>
-            <option>AI영어학과</option>
-            <option>동양학과</option>
-            <option>선도문화학과</option>
-            <option>사회복지학부</option>
-            <option>스포츠건강학부</option>
-            <option>AI융합학부</option>
-            <option>교양학부</option>
-            <option>연계전공</option>
-          </select>
-          <select class="course-select" id="ftype" onchange="if(listOpen)fc()">
-            <option value="">전체 이수구분</option>
-            <option>전공필수</option>
-            <option>전공선택</option>
-            <option>교양필수</option>
-            <option>교양선택</option>
-          </select>
-        </div>
+      <!-- 필터: 개설학과 선택 -->
+      <div style="margin-bottom:10px;">
+        <label style="display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px;">개설학과 선택</label>
+        <select class="course-select" id="fdept" onchange="onDeptChange()" style="width:100%;">
+          <option value="">— 학과를 선택하세요 —</option>
+            <option value="뇌기반상담심리학과">뇌기반상담심리학과</option>
+            <option value="뇌기반감정코칭학과">뇌기반감정코칭학과</option>
+            <option value="명상치료학과">명상치료학과</option>
+            <option value="뇌교육학과">뇌교육학과</option>
+            <option value="브레인트레이닝학과">브레인트레이닝학과</option>
+            <option value="방송연예학과">방송연예학과</option>
+            <option value="미디어콘텐츠학과">미디어콘텐츠학과</option>
+            <option value="AI영어학과">AI영어학과</option>
+            <option value="동양학과">동양학과</option>
+            <option value="상담심리학과">상담심리학과</option>
+            <option value="선도문화학과">선도문화학과</option>
+            <option value="사회복지학부">사회복지학부</option>
+            <option value="스포츠건강학부">스포츠건강학부</option>
+            <option value="AI융합학부">AI융합학부</option>
+            <option value="교양학부">교양학부</option>
+            <option value="지구경영융합전공">지구경영융합전공</option>
+            <option value="주류양조·소믈리에 융합전공">주류양조·소믈리에 융합전공</option>
+            <option value="치매전문케어 연계전공">치매전문케어 연계전공</option>
+            <option value="글로벌K문화 연계전공">글로벌K문화 연계전공</option>
+            <option value="AI콘텐츠 연계전공">AI콘텐츠 연계전공</option>
+            <option value="브레인아로마 연계전공">브레인아로마 연계전공</option>
+        </select>
       </div>
       <!-- 토글 버튼 -->
       <button id="toggleBtn" onclick="toggleList()"
@@ -837,111 +834,7 @@ body {
 </div>
 
 <script>
-// ===== 과목 데이터 =====
-const COURSES = [
-  // 뇌기반상담심리학과
-  {dept:'뇌기반상담심리학과',grade:'1',type:'전공필수',subject:'상담심리학(구. 상담의 이론과 실제)',code:'103038',prof:'고건영',credit:3},
-  {dept:'뇌기반상담심리학과',grade:'1',type:'전공선택',subject:'상담심리학(구. 상담의 이론과 실제)',code:'103038',prof:'고건영',credit:3},
-  {dept:'뇌기반상담심리학과',grade:'2',type:'전공선택',subject:'두뇌의 구조와 기능론',code:'900001',prof:'오창영',credit:3},
-  // 뇌기반감정코칭학과
-  {dept:'뇌기반감정코칭학과',grade:'1',type:'전공필수',subject:'명상치료',code:'810101',prof:'한정현',credit:3},
-  {dept:'뇌기반감정코칭학과',grade:'2',type:'전공필수',subject:'사회심리학',code:'810108',prof:'한정현',credit:3},
-  {dept:'뇌기반감정코칭학과',grade:'2',type:'전공필수',subject:'명상과 심리치료',code:'810102',prof:'한정현',credit:3},
-  // 명상치료학과
-  {dept:'명상치료학과',grade:'1',type:'전공필수',subject:'융합시대의 뇌교육 입문',code:'401035',prof:'장래혁',credit:3},
-  {dept:'명상치료학과',grade:'1',type:'전공필수',subject:'뇌교육의 이해',code:'401004',prof:'장래혁',credit:3},
-  {dept:'명상치료학과',grade:'1',type:'전공선택',subject:'두뇌의 구조와 기능론',code:'900001',prof:'오창영',credit:3},
-  {dept:'명상치료학과',grade:'2',type:'전공필수',subject:'뇌교육 심화',code:'401034',prof:'장래혁',credit:3},
-  {dept:'명상치료학과',grade:'3',type:'전공필수',subject:'뇌교육 심화 II',code:'401038',prof:'장래혁',credit:3},
-  {dept:'명상치료학과',grade:'3',type:'전공선택',subject:'러브유어셀프 : 체인지 프로젝트',code:'401041',prof:'장래혁',credit:3},
-  {dept:'명상치료학과',grade:'4',type:'전공선택',subject:'멘탈헬스UP, 두뇌트레이닝',code:'401047',prof:'장래혁',credit:3},
-  {dept:'명상치료학과',grade:'1',type:'전공필수',subject:'두뇌의 구조와 기능론',code:'900001',prof:'오창영',credit:3},
-  {dept:'명상치료학과',grade:'2',type:'전공선택',subject:'감정노동힐링365',code:'401033',prof:'오창영',credit:3},
-  {dept:'명상치료학과',grade:'3',type:'전공선택',subject:'창의성과 문제해결',code:'401036',prof:'오창영',credit:3},
-  // 뇌교육학과
-  {dept:'뇌교육학과',grade:'1',type:'전공필수',subject:'엔터테인먼트 산업의 이해',code:'203002',prof:'천범주',credit:3},
-  {dept:'뇌교육학과',grade:'3',type:'전공필수',subject:'케이팝산업의 이해(구.연예프로듀서실무)',code:'203021',prof:'천범주',credit:3},
-  {dept:'뇌교육학과',grade:'4',type:'전공선택',subject:'K-프로듀서(한류를 만드는 사람들)',code:'203029',prof:'천범주',credit:3},
-  // 브레인트레이닝학과
-  {dept:'브레인트레이닝학과',grade:'1',type:'전공필수',subject:'문화콘텐츠 산업론',code:'201002',prof:'손애경',credit:3},
-  {dept:'브레인트레이닝학과',grade:'2',type:'전공필수',subject:'콘텐츠기획입문',code:'201004',prof:'손애경',credit:3},
-  {dept:'브레인트레이닝학과',grade:'3',type:'전공필수',subject:'지역문화상품과 축제사례연구',code:'201018',prof:'손애경',credit:3},
-  {dept:'브레인트레이닝학과',grade:'4',type:'전공필수',subject:'한일 식문화 디자인 입문',code:'202045',prof:'손애경',credit:3},
-  // 방송연예학과
-  {dept:'방송연예학과',grade:'1',type:'전공필수',subject:'실전영어회화',code:'601004',prof:'윤경주',credit:3},
-  {dept:'방송연예학과',grade:'1',type:'전공필수',subject:'언어의 이해',code:'601002',prof:'윤경주',credit:3},
-  {dept:'방송연예학과',grade:'2',type:'전공필수',subject:'문화간 의사소통기술',code:'601008',prof:'윤경주',credit:3},
-  // 미디어콘텐츠학과 (동양학과)
-  {dept:'미디어콘텐츠학과',grade:'1',type:'전공필수',subject:'명리학총론',code:'501002',prof:'박영창',credit:3},
-  {dept:'미디어콘텐츠학과',grade:'1',type:'전공선택',subject:'삼명통회연구',code:'501049',prof:'김미석',credit:3},
-  {dept:'미디어콘텐츠학과',grade:'2',type:'전공필수',subject:'명리학적천수강해',code:'501005',prof:'박영창',credit:3},
-  {dept:'미디어콘텐츠학과',grade:'2',type:'전공선택',subject:'명리신살통변론',code:'501047',prof:'김미석',credit:3},
-  {dept:'미디어콘텐츠학과',grade:'3',type:'전공필수',subject:'현대명리학연구',code:'501026',prof:'박영창',credit:3},
-  {dept:'미디어콘텐츠학과',grade:'3',type:'전공필수',subject:'명리일주론',code:'501045',prof:'김미석',credit:3},
-  {dept:'미디어콘텐츠학과',grade:'4',type:'전공선택',subject:'명리비결연구',code:'501031',prof:'김미석',credit:3},
-  // AI영어학과
-  {dept:'AI영어학과',grade:'3',type:'전공선택',subject:'인간중심 빅데이터',code:'330119',prof:'석광호',credit:3},
-  // 선도문화학과
-  {dept:'선도문화학과',grade:'1',type:'전공필수',subject:'한국사의 이해 I',code:'900024',prof:'민성욱',credit:3},
-  {dept:'선도문화학과',grade:'1',type:'전공필수',subject:'한국문화와 국학운동',code:'900040',prof:'민성욱',credit:3},
-  {dept:'선도문화학과',grade:'2',type:'전공필수',subject:'한국선도의 역사와 문화',code:'530306',prof:'민성욱',credit:3},
-  {dept:'선도문화학과',grade:'3',type:'전공필수',subject:'인간완성학',code:'530313',prof:'민성욱',credit:3},
-  // 사회복지학부
-  {dept:'사회복지학부',grade:'3',type:'전공필수',subject:'사회복지정책론',code:'101022',prof:'오화영',credit:3},
-  // 스포츠건강학부
-  {dept:'스포츠건강학부',grade:'1',type:'전공필수',subject:'생활체조와 단전호흡',code:'402008',prof:'이수경',credit:3},
-  {dept:'스포츠건강학부',grade:'2',type:'전공필수',subject:'건강생물학',code:'402001',prof:'이수경',credit:3},
-  {dept:'스포츠건강학부',grade:'3',type:'전공선택',subject:'노인체육론',code:'402021',prof:'이수경',credit:3},
-  {dept:'스포츠건강학부',grade:'4',type:'전공필수',subject:'건강교육론',code:'402026',prof:'이수경',credit:3},
-  // AI융합학부
-  {dept:'AI융합학부',grade:'1',type:'전공선택',subject:'메타버스 개론',code:'330127',prof:'석광호',credit:3},
-  {dept:'AI융합학부',grade:'2',type:'전공필수',subject:'AI개론',code:'330114',prof:'석광호',credit:3},
-  {dept:'AI융합학부',grade:'2',type:'전공필수',subject:'인간중심 빅데이터',code:'330119',prof:'석광호',credit:3},
-  {dept:'AI융합학부',grade:'2',type:'전공선택',subject:'자료구조와 알고리즘',code:'330138',prof:'박형용',credit:3},
-  {dept:'AI융합학부',grade:'3',type:'전공선택',subject:'빅데이터분석',code:'330116',prof:'석광호',credit:3},
-  {dept:'AI융합학부',grade:'4',type:'전공선택',subject:'유니티 실무',code:'330134',prof:'석광호',credit:3},
-  {dept:'AI융합학부',grade:'4',type:'전공선택',subject:'컴퓨터비전',code:'330147',prof:'석광호',credit:3},
-  // 교양학부
-  {dept:'교양학부',grade:'-',type:'교양필수',subject:'지구경영으로의 초대',code:'900020',prof:'장래혁',credit:3},
-  {dept:'교양학부',grade:'-',type:'교양선택',subject:'여성과 사회',code:'101001',prof:'오화영',credit:3},
-  {dept:'교양학부',grade:'-',type:'교양선택',subject:'평생교육론',code:'401003',prof:'정봉영',credit:3},
-  {dept:'교양학부',grade:'-',type:'교양선택',subject:'성인학습 및 상담',code:'900010',prof:'정봉영',credit:3},
-  {dept:'교양학부',grade:'-',type:'교양선택',subject:'디지털콘텐츠와 저작권',code:'201015',prof:'손애경',credit:3},
-  {dept:'교양학부',grade:'-',type:'교양선택',subject:'점성학',code:'900072',prof:'조만섭',credit:3},
-  {dept:'교양학부',grade:'-',type:'교양선택',subject:'대중문화와 예술',code:'203005',prof:'손애경',credit:3},
-  {dept:'교양학부',grade:'-',type:'교양선택',subject:'한국사의 이해 I',code:'900024',prof:'민성욱',credit:3},
-  {dept:'교양학부',grade:'-',type:'교양선택',subject:'대중문화 속 생활 한국어',code:'900085',prof:'손애경',credit:3},
-  // 연계전공
-  {dept:'연계전공',grade:'2',type:'전공선택',subject:'AI개론',code:'330114',prof:'석광호',credit:3,sub:'지구경영융합전공'},
-  {dept:'연계전공',grade:'2',type:'전공필수',subject:'뇌교육의 이해',code:'401004',prof:'장래혁',credit:3,sub:'지구경영융합전공'},
-  {dept:'연계전공',grade:'2',type:'전공선택',subject:'뇌교육 심화',code:'401034',prof:'장래혁',credit:3,sub:'지구경영융합전공'},
-  {dept:'연계전공',grade:'4',type:'전공선택',subject:'러브유어셀프 : 체인지 프로젝트',code:'401041',prof:'장래혁',credit:3,sub:'지구경영융합전공'},
-  {dept:'연계전공',grade:'2',type:'전공필수',subject:'한일 식문화 디자인 입문',code:'202045',prof:'손애경',credit:3,sub:'주류양조·소믈리에 융합전공'},
-  {dept:'연계전공',grade:'3',type:'전공필수',subject:'지역문화상품과 축제사례연구',code:'201018',prof:'손애경',credit:3,sub:'주류양조·소믈리에 융합전공'},
-  {dept:'연계전공',grade:'2',type:'전공필수',subject:'상담심리학(구. 상담의 이론과 실제)',code:'103038',prof:'고건영',credit:3,sub:'치매전문케어 연계전공'},
-  {dept:'연계전공',grade:'3',type:'전공선택',subject:'뇌교육의 이해',code:'401004',prof:'장래혁',credit:3,sub:'치매전문케어 연계전공'},
-  {dept:'연계전공',grade:'4',type:'전공선택',subject:'노인체육론',code:'402021',prof:'이수경',credit:3,sub:'치매전문케어 연계전공'},
-  {dept:'연계전공',grade:'2',type:'전공필수',subject:'문화콘텐츠 산업론',code:'201002',prof:'손애경',credit:3,sub:'글로벌K문화 연계전공'},
-  {dept:'연계전공',grade:'2',type:'전공선택',subject:'콘텐츠기획입문',code:'201004',prof:'손애경',credit:3,sub:'글로벌K문화 연계전공'},
-  {dept:'연계전공',grade:'2',type:'전공선택',subject:'문화간 의사소통기술',code:'601008',prof:'윤경주',credit:3,sub:'글로벌K문화 연계전공'},
-  {dept:'연계전공',grade:'2',type:'전공선택',subject:'한국사의 이해 I',code:'900024',prof:'민성욱',credit:3,sub:'글로벌K문화 연계전공'},
-  {dept:'연계전공',grade:'2',type:'전공선택',subject:'실전영어회화',code:'601004',prof:'윤경주',credit:3,sub:'글로벌K문화 연계전공'},
-  {dept:'연계전공',grade:'3',type:'전공필수',subject:'지역문화상품과 축제사례연구',code:'201018',prof:'손애경',credit:3,sub:'글로벌K문화 연계전공'},
-  {dept:'연계전공',grade:'3',type:'전공선택',subject:'대중문화 속 생활 한국어',code:'900085',prof:'손애경',credit:3,sub:'글로벌K문화 연계전공'},
-  {dept:'연계전공',grade:'3',type:'전공선택',subject:'언어의 이해',code:'601002',prof:'윤경주',credit:3,sub:'글로벌K문화 연계전공'},
-  {dept:'연계전공',grade:'4',type:'전공필수',subject:'대중문화와 예술',code:'203005',prof:'손애경',credit:3,sub:'글로벌K문화 연계전공'},
-  {dept:'연계전공',grade:'4',type:'전공선택',subject:'한국문화와 국학운동',code:'900040',prof:'민성욱',credit:3,sub:'글로벌K문화 연계전공'},
-  {dept:'연계전공',grade:'2',type:'전공필수',subject:'콘텐츠기획입문',code:'201004',prof:'손애경',credit:3,sub:'AI콘텐츠 연계전공'},
-  {dept:'연계전공',grade:'2',type:'전공선택',subject:'인간중심 빅데이터',code:'330119',prof:'석광호',credit:3,sub:'AI콘텐츠 연계전공'},
-  {dept:'연계전공',grade:'2',type:'전공선택',subject:'메타버스 개론',code:'330127',prof:'석광호',credit:3,sub:'AI콘텐츠 연계전공'},
-  {dept:'연계전공',grade:'3',type:'전공필수',subject:'디지털콘텐츠와 저작권',code:'201015',prof:'손애경',credit:3,sub:'AI콘텐츠 연계전공'},
-  {dept:'연계전공',grade:'3',type:'전공필수',subject:'AI개론',code:'330114',prof:'석광호',credit:3,sub:'AI콘텐츠 연계전공'},
-  {dept:'연계전공',grade:'4',type:'전공선택',subject:'유니티 실무',code:'330134',prof:'석광호',credit:3,sub:'AI콘텐츠 연계전공'},
-  {dept:'연계전공',grade:'2',type:'전공필수',subject:'뇌교육의 이해',code:'401004',prof:'장래혁',credit:3,sub:'브레인아로마 연계전공'},
-  {dept:'연계전공',grade:'3',type:'전공필수',subject:'두뇌의 구조와 기능론',code:'900001',prof:'오창영',credit:3,sub:'브레인아로마 연계전공'},
-  {dept:'연계전공',grade:'4',type:'전공선택',subject:'뇌교육 심화',code:'401034',prof:'장래혁',credit:3,sub:'브레인아로마 연계전공'},
-  {dept:'연계전공',grade:'4',type:'전공선택',subject:'멘탈헬스UP, 두뇌트레이닝',code:'401047',prof:'장래혁',credit:3,sub:'브레인아로마 연계전공'},
-];
+const COURSES = [{"dept": "뇌기반상담심리학과", "grade": "1", "type": "전공필수", "subject": "상담심리학(구. 상담의 이론과 실제)", "prof": "고건영", "credit": 3}, {"dept": "뇌기반감정코칭학과", "grade": "1", "type": "전공선택", "subject": "상담심리학(구. 상담의 이론과 실제)", "prof": "고건영", "credit": 3}, {"dept": "뇌기반감정코칭학과", "grade": "2", "type": "전공선택", "subject": "두뇌의 구조와 기능론", "prof": "오창영", "credit": 3}, {"dept": "명상치료학과", "grade": "1", "type": "전공필수", "subject": "명상치료", "prof": "한정현", "credit": 3}, {"dept": "명상치료학과", "grade": "2", "type": "전공필수", "subject": "사회심리학", "prof": "한정현", "credit": 3}, {"dept": "명상치료학과", "grade": "2", "type": "전공필수", "subject": "명상과 심리치료", "prof": "한정현", "credit": 3}, {"dept": "뇌교육학과", "grade": "1", "type": "전공필수", "subject": "융합시대의 뇌교육 입문", "prof": "장래혁", "credit": 3}, {"dept": "뇌교육학과", "grade": "1", "type": "전공필수", "subject": "뇌교육의 이해", "prof": "장래혁", "credit": 3}, {"dept": "뇌교육학과", "grade": "1", "type": "전공선택", "subject": "두뇌의 구조와 기능론", "prof": "오창영", "credit": 3}, {"dept": "뇌교육학과", "grade": "2", "type": "전공필수", "subject": "뇌교육 심화", "prof": "장래혁", "credit": 3}, {"dept": "뇌교육학과", "grade": "3", "type": "전공필수", "subject": "뇌교육 심화 II", "prof": "장래혁", "credit": 3}, {"dept": "뇌교육학과", "grade": "3", "type": "전공선택", "subject": "러브유어셀프 : 체인지 프로젝트", "prof": "장래혁", "credit": 3}, {"dept": "뇌교육학과", "grade": "4", "type": "전공선택", "subject": "멘탈헬스UP, 두뇌트레이닝", "prof": "장래혁", "credit": 3}, {"dept": "브레인트레이닝학과", "grade": "1", "type": "전공필수", "subject": "두뇌의 구조와 기능론", "prof": "오창영", "credit": 3}, {"dept": "브레인트레이닝학과", "grade": "2", "type": "전공선택", "subject": "감정노동힐링365", "prof": "오창영", "credit": 3}, {"dept": "브레인트레이닝학과", "grade": "3", "type": "전공선택", "subject": "창의성과 문제해결", "prof": "오창영", "credit": 3}, {"dept": "방송연예학과", "grade": "1", "type": "전공필수", "subject": "엔터테인먼트 산업의 이해", "prof": "천범주", "credit": 3}, {"dept": "방송연예학과", "grade": "3", "type": "전공필수", "subject": "케이팝산업의 이해 (구.연예프로듀서실무)", "prof": "천범주", "credit": 3}, {"dept": "방송연예학과", "grade": "4", "type": "전공선택", "subject": "K-프로듀서(한류를 만드는 사람들)", "prof": "천범주", "credit": 3}, {"dept": "미디어콘텐츠학과", "grade": "1", "type": "전공필수", "subject": "문화콘텐츠 산업론", "prof": "손애경", "credit": 3}, {"dept": "미디어콘텐츠학과", "grade": "2", "type": "전공필수", "subject": "콘텐츠기획입문", "prof": "손애경", "credit": 3}, {"dept": "미디어콘텐츠학과", "grade": "3", "type": "전공필수", "subject": "지역문화상품과 축제사례연구", "prof": "손애경", "credit": 3}, {"dept": "미디어콘텐츠학과", "grade": "4", "type": "전공필수", "subject": "한일 식문화 디자인 입문", "prof": "손애경", "credit": 3}, {"dept": "AI영어학과", "grade": "1", "type": "전공필수", "subject": "실전영어회화", "prof": "윤경주", "credit": 3}, {"dept": "AI영어학과", "grade": "1", "type": "전공필수", "subject": "언어의 이해", "prof": "윤경주", "credit": 3}, {"dept": "AI영어학과", "grade": "2", "type": "전공필수", "subject": "문화간 의사소통기술", "prof": "윤경주", "credit": 3}, {"dept": "동양학과", "grade": "1", "type": "전공필수", "subject": "명리학총론", "prof": "박영창", "credit": 3}, {"dept": "동양학과", "grade": "1", "type": "전공선택", "subject": "삼명통회연구", "prof": "김미석", "credit": 3}, {"dept": "동양학과", "grade": "2", "type": "전공필수", "subject": "명리학적천수강해", "prof": "박영창", "credit": 3}, {"dept": "동양학과", "grade": "2", "type": "전공선택", "subject": "명리신살통변론", "prof": "김미석", "credit": 3}, {"dept": "동양학과", "grade": "3", "type": "전공필수", "subject": "현대명리학연구", "prof": "박영창", "credit": 3}, {"dept": "동양학과", "grade": "3", "type": "전공필수", "subject": "명리일주론", "prof": "김미석", "credit": 3}, {"dept": "동양학과", "grade": "4", "type": "전공선택", "subject": "명리비결연구", "prof": "김미석", "credit": 3}, {"dept": "상담심리학과", "grade": "3", "type": "전공선택", "subject": "인간중심 빅데이터", "prof": "석광호", "credit": 3}, {"dept": "선도문화학과", "grade": "1", "type": "전공필수", "subject": "한국사의 이해 I", "prof": "민성욱", "credit": 3}, {"dept": "선도문화학과", "grade": "1", "type": "전공필수", "subject": "한국문화와 국학운동", "prof": "민성욱", "credit": 3}, {"dept": "선도문화학과", "grade": "2", "type": "전공필수", "subject": "한국선도의 역사와 문화", "prof": "민성욱", "credit": 3}, {"dept": "선도문화학과", "grade": "3", "type": "전공필수", "subject": "인간완성학", "prof": "민성욱", "credit": 3}, {"dept": "사회복지학부", "grade": "3", "type": "전공필수", "subject": "사회복지정책론", "prof": "오화영", "credit": 3}, {"dept": "스포츠건강학부", "grade": "1", "type": "전공필수", "subject": "생활체조와 단전호흡", "prof": "이수경", "credit": 3}, {"dept": "스포츠건강학부", "grade": "2", "type": "전공필수", "subject": "건강생물학", "prof": "이수경", "credit": 3}, {"dept": "스포츠건강학부", "grade": "3", "type": "전공선택", "subject": "노인체육론", "prof": "이수경", "credit": 3}, {"dept": "스포츠건강학부", "grade": "4", "type": "전공필수", "subject": "건강교육론", "prof": "이수경", "credit": 3}, {"dept": "AI융합학부", "grade": "1", "type": "전공선택", "subject": "메타버스 개론", "prof": "석광호", "credit": 3}, {"dept": "AI융합학부", "grade": "2", "type": "전공필수", "subject": "AI개론", "prof": "석광호", "credit": 3}, {"dept": "AI융합학부", "grade": "2", "type": "전공필수", "subject": "인간중심 빅데이터", "prof": "석광호", "credit": 3}, {"dept": "AI융합학부", "grade": "2", "type": "전공선택", "subject": "자료구조와 알고리즘", "prof": "박형용", "credit": 3}, {"dept": "AI융합학부", "grade": "3", "type": "전공선택", "subject": "빅데이터분석", "prof": "석광호", "credit": 3}, {"dept": "AI융합학부", "grade": "4", "type": "전공선택", "subject": "유니티 실무", "prof": "석광호", "credit": 3}, {"dept": "AI융합학부", "grade": "4", "type": "전공선택", "subject": "컴퓨터비전", "prof": "석광호", "credit": 3}, {"dept": "교양학부", "grade": "공통", "type": "교양필수", "subject": "지구경영으로의 초대", "prof": "장래혁", "credit": 3}, {"dept": "교양학부", "grade": "인간과 사회 영역", "type": "교양선택", "subject": "여성과 사회", "prof": "오화영", "credit": 3}, {"dept": "교양학부", "grade": "인간과 사회 영역", "type": "교양선택", "subject": "평생교육론", "prof": "정봉영", "credit": 3}, {"dept": "교양학부", "grade": "인간과 사회 영역", "type": "교양선택", "subject": "성인학습 및 상담", "prof": "정봉영", "credit": 3}, {"dept": "교양학부", "grade": "과학 · 기술 · 정보 영역", "type": "교양선택", "subject": "디지털콘텐츠와 저작권", "prof": "손애경", "credit": 3}, {"dept": "교양학부", "grade": "역사 · 철학 · 문화 영역", "type": "교양선택", "subject": "점성학", "prof": "조만섭", "credit": 3}, {"dept": "교양학부", "grade": "역사 · 철학 · 문화 영역", "type": "교양선택", "subject": "대중문화와 예술", "prof": "손애경", "credit": 3}, {"dept": "교양학부", "grade": "역사 · 철학 · 문화 영역", "type": "교양선택", "subject": "한국사의 이해 I", "prof": "민성욱", "credit": 3}, {"dept": "교양학부", "grade": "글로벌 소양 영역", "type": "교양선택", "subject": "대중문화 속 생활 한국어", "prof": "손애경", "credit": 3}, {"dept": "지구경영융합전공", "grade": "2", "type": "전공선택", "subject": "AI개론", "prof": "석광호", "credit": 3}, {"dept": "지구경영융합전공", "grade": "2", "type": "전공필수", "subject": "뇌교육의 이해", "prof": "장래혁", "credit": 3}, {"dept": "지구경영융합전공", "grade": "2", "type": "전공선택", "subject": "뇌교육 심화", "prof": "장래혁", "credit": 3}, {"dept": "지구경영융합전공", "grade": "4", "type": "전공선택", "subject": "러브유어셀프 : 체인지 프로젝트", "prof": "장래혁", "credit": 3}, {"dept": "주류양조·소믈리에 융합전공", "grade": "2", "type": "전공필수", "subject": "한일 식문화 디자인 입문", "prof": "손애경", "credit": 3}, {"dept": "주류양조·소믈리에 융합전공", "grade": "3", "type": "전공필수", "subject": "지역문화상품과 축제사례연구", "prof": "손애경", "credit": 3}, {"dept": "치매전문케어 연계전공", "grade": "2", "type": "전공필수", "subject": "상담심리학(구. 상담의 이론과 실제)", "prof": "고건영", "credit": 3}, {"dept": "치매전문케어 연계전공", "grade": "3", "type": "전공선택", "subject": "뇌교육의 이해", "prof": "장래혁", "credit": 3}, {"dept": "치매전문케어 연계전공", "grade": "4", "type": "전공선택", "subject": "노인체육론", "prof": "이수경", "credit": 3}, {"dept": "글로벌K문화 연계전공", "grade": "2", "type": "전공필수", "subject": "문화콘텐츠 산업론", "prof": "손애경", "credit": 3}, {"dept": "글로벌K문화 연계전공", "grade": "2", "type": "전공선택", "subject": "콘텐츠기획입문", "prof": "손애경", "credit": 3}, {"dept": "글로벌K문화 연계전공", "grade": "2", "type": "전공선택", "subject": "문화간 의사소통기술", "prof": "윤경주", "credit": 3}, {"dept": "글로벌K문화 연계전공", "grade": "2", "type": "전공선택", "subject": "한국사의 이해1", "prof": "민성욱", "credit": 3}, {"dept": "글로벌K문화 연계전공", "grade": "2", "type": "전공선택", "subject": "실전영어회화", "prof": "윤경주", "credit": 3}, {"dept": "글로벌K문화 연계전공", "grade": "3", "type": "전공필수", "subject": "지역문화상품과 축제사례연구", "prof": "손애경", "credit": 3}, {"dept": "글로벌K문화 연계전공", "grade": "3", "type": "전공선택", "subject": "대중문화 속 생활 한국어", "prof": "손애경", "credit": 3}, {"dept": "글로벌K문화 연계전공", "grade": "3", "type": "전공선택", "subject": "언어의 이해", "prof": "윤경주", "credit": 3}, {"dept": "글로벌K문화 연계전공", "grade": "4", "type": "전공필수", "subject": "대중문화와 예술", "prof": "손애경", "credit": 3}, {"dept": "글로벌K문화 연계전공", "grade": "4", "type": "전공선택", "subject": "한국문화와 국학운동", "prof": "민성욱", "credit": 3}, {"dept": "AI콘텐츠 연계전공", "grade": "2", "type": "전공필수", "subject": "콘텐츠기획입문", "prof": "손애경", "credit": 3}, {"dept": "AI콘텐츠 연계전공", "grade": "2", "type": "전공선택", "subject": "인간중심 빅데이터", "prof": "석광호", "credit": 3}, {"dept": "AI콘텐츠 연계전공", "grade": "2", "type": "전공선택", "subject": "메타버스 개론", "prof": "석광호", "credit": 3}, {"dept": "AI콘텐츠 연계전공", "grade": "3", "type": "전공필수", "subject": "디지털콘텐츠와 저작권", "prof": "손애경", "credit": 3}, {"dept": "AI콘텐츠 연계전공", "grade": "3", "type": "전공필수", "subject": "AI개론", "prof": "석광호", "credit": 3}, {"dept": "AI콘텐츠 연계전공", "grade": "4", "type": "전공선택", "subject": "유니티 실무", "prof": "석광호", "credit": 3}, {"dept": "브레인아로마 연계전공", "grade": "2", "type": "전공필수", "subject": "뇌교육의 이해", "prof": "장래혁", "credit": 3}, {"dept": "브레인아로마 연계전공", "grade": "3", "type": "전공필수", "subject": "두뇌의 구조와 기능론", "prof": "오창영", "credit": 3}, {"dept": "브레인아로마 연계전공", "grade": "4", "type": "전공선택", "subject": "뇌교육 심화", "prof": "장래혁", "credit": 3}, {"dept": "브레인아로마 연계전공", "grade": "4", "type": "전공선택", "subject": "멘탈헬스UP, 두뇌트레이닝", "prof": "장래혁", "credit": 3}];
 
 function badgeClass(t) {
   if(t==='전공필수') return 'badge badge-req';
@@ -950,50 +843,66 @@ function badgeClass(t) {
   return 'badge badge-gyo';
 }
 
-function fc() {
-  const q = document.getElementById('srch').value.toLowerCase();
-  const d = document.getElementById('fdept').value;
-  const t = document.getElementById('ftype').value;
-
-  const filtered = COURSES.filter(c => {
-    const txt = (c.dept+c.subject+c.prof+(c.sub||'')).toLowerCase();
-    return (!q || txt.includes(q))
-        && (!d || c.dept === d)
-        && (!t || c.type === t);
-  });
-
-  document.getElementById('cnt').textContent = `총 ${filtered.length}개 과목`;
-
-  // 카드형 (모바일)
+function renderCourses(filtered) {
   const cardsEl = document.getElementById('cards');
   cardsEl.innerHTML = filtered.map(c => `
     <div class="course-card">
-      <div class="cc-dept">${c.sub ? c.sub : c.dept}</div>
       <div class="cc-subject">${c.subject}</div>
       <div class="cc-meta">
         <span class="${badgeClass(c.type)}">${c.type}</span>
-        <span class="cc-grade">${c.grade !== '-' ? c.grade+'학년' : '교양'}</span>
+        <span class="cc-grade">${/^\d$/.test(c.grade) ? c.grade+'학년' : c.grade}</span>
         <span class="cc-prof">👨‍🏫 ${c.prof}</span>
-        <span class="cc-code">${c.code}</span>
       </div>
     </div>
   `).join('');
 
-  // 테이블형 (데스크탑)
   const tbody = document.getElementById('ctbody');
-  tbody.innerHTML = filtered.map(c => `
+  if(tbody) tbody.innerHTML = filtered.map(c => `
     <tr>
-      <td style="text-align:left;">${c.sub ? c.sub : c.dept}</td>
+      <td style="text-align:left;">${c.dept}</td>
       <td>${c.grade}</td>
       <td><span class="${badgeClass(c.type)}">${c.type}</span></td>
       <td style="text-align:left;">${c.subject}</td>
-      <td>${c.code}</td>
       <td>${c.prof}</td>
       <td>${c.credit}</td>
     </tr>
   `).join('');
 
-  document.getElementById('noRes').style.display = filtered.length === 0 ? 'block' : 'none';
+  const noRes = document.getElementById('noRes');
+  if(noRes) noRes.style.display = filtered.length === 0 ? 'block' : 'none';
+  document.getElementById('cnt').textContent = `총 ${filtered.length}개 과목`;
+}
+
+function onDeptChange() {
+  const dept = document.getElementById('fdept').value;
+  const listEl = document.getElementById('courseList');
+  const btn = document.getElementById('toggleBtn');
+  const txt = document.getElementById('toggleTxt');
+  const arrow = document.getElementById('toggleArrow');
+
+  if (!dept) {
+    // 선택 안 함 → 목록 숨김
+    listOpen = false;
+    listEl.style.display = 'none';
+    btn.style.background = 'var(--blue-bg)';
+    btn.style.color = 'var(--primary)';
+    btn.style.borderColor = '#bfd4f7';
+    txt.textContent = '전체 과목 목록 보기';
+    arrow.textContent = '▼';
+    return;
+  }
+
+  // 학과 선택 시 목록 자동 표시
+  listOpen = true;
+  listEl.style.display = 'block';
+  btn.style.background = 'var(--primary)';
+  btn.style.color = '#fff';
+  btn.style.borderColor = 'var(--primary)';
+  txt.textContent = '과목 목록 닫기';
+  arrow.textContent = '▲';
+
+  const filtered = COURSES.filter(c => c.dept === dept);
+  renderCourses(filtered);
 }
 
 let listOpen = false;
@@ -1010,7 +919,9 @@ function toggleList() {
     btn.style.borderColor = 'var(--primary)';
     txt.textContent = '과목 목록 닫기';
     arrow.textContent = '▲';
-    fc();
+    const dept = document.getElementById('fdept').value;
+    const filtered = dept ? COURSES.filter(c => c.dept === dept) : COURSES;
+    renderCourses(filtered);
   } else {
     el.style.display = 'none';
     btn.style.background = 'var(--blue-bg)';
