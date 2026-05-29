@@ -2,1045 +2,990 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026학년도 여름계절학기 안내 | 글로벌사이버대학교</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#1a3a6b">
+<title>2026 여름계절학기 안내 | 글로벌사이버대학교</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --primary: #1a3a6b;
-    --primary-light: #2d5aa0;
-    --accent: #e8622a;
-    --accent-soft: #fff0e8;
-    --bg: #f8f9fc;
-    --surface: #ffffff;
-    --border: #e2e8f0;
-    --text: #1e2a3a;
-    --text-muted: #5a6a7e;
-    --highlight: #fffbe6;
-    --highlight-border: #f0c040;
-    --green-bg: #e6f7f0;
-    --green-text: #1a7a4a;
-    --red-text: #c0392b;
-    --blue-light: #e8f0fb;
-    --pink-light: #fce8f8;
-  }
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #1a3a6b;
+  --primary-light: #2d5aa0;
+  --accent: #e8622a;
+  --accent-soft: #fff3ed;
+  --bg: #f2f4f8;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --text: #1e2a3a;
+  --muted: #64748b;
+  --red: #c0392b;
+  --blue-bg: #eef3fc;
+  --pink-bg: #fce8f8;
+  --green-bg: #e8faf0;
 
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.75;
-    font-size: 15px;
-  }
+  --radius: 14px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  --touch: 44px; /* minimum touch target */
+}
 
-  /* Header */
-  .page-header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    color: white;
-    padding: 48px 24px 40px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .page-header::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 220px; height: 220px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-  }
-  .page-header::after {
-    content: '';
-    position: absolute;
-    bottom: -40px; left: -40px;
-    width: 160px; height: 160px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-  }
-  .header-badge {
-    display: inline-block;
-    background: var(--accent);
-    color: white;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 14px;
-    border-radius: 20px;
-    margin-bottom: 14px;
-    letter-spacing: 0.5px;
-  }
-  .page-header h1 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: clamp(20px, 4vw, 28px);
-    font-weight: 600;
-    margin-bottom: 8px;
-    line-height: 1.4;
-  }
-  .page-header .meta {
-    font-size: 13px;
-    opacity: 0.75;
-    margin-top: 10px;
-  }
+html { -webkit-text-size-adjust: 100%; }
 
-  /* Layout */
-  .container {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 32px 16px 60px;
-  }
+body {
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
 
-  /* Quick Summary Cards */
-  .quick-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
-    margin-bottom: 36px;
-  }
-  .quick-card {
-    background: var(--surface);
-    border-radius: 12px;
-    padding: 18px 16px;
-    border-left: 4px solid var(--primary);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-  .quick-card .label {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    margin-bottom: 6px;
-  }
-  .quick-card .value {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--primary);
-    line-height: 1.4;
-  }
-  .quick-card.accent { border-left-color: var(--accent); }
-  .quick-card.accent .value { color: var(--accent); }
+/* ===== HEADER ===== */
+.page-header {
+  background: linear-gradient(150deg, #0f2548 0%, #1a3a6b 50%, #2d5aa0 100%);
+  color: #fff;
+  padding: 40px 20px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+.header-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  letter-spacing: 0.3px;
+}
+.page-header h1 {
+  font-size: clamp(18px, 5vw, 26px);
+  font-weight: 700;
+  line-height: 1.45;
+  margin-bottom: 10px;
+  word-break: keep-all;
+}
+.page-header .meta {
+  font-size: 13px;
+  opacity: 0.7;
+  word-break: keep-all;
+}
 
-  /* Section */
-  .section {
-    background: var(--surface);
-    border-radius: 14px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    overflow: hidden;
-  }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 18px 24px;
-    background: var(--primary);
-    color: white;
-  }
-  .section-number {
-    width: 28px; height: 28px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .section-title {
-    font-size: 16px;
-    font-weight: 600;
-  }
-  .section-body {
-    padding: 20px 24px;
-  }
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 20px 14px 60px;
+}
 
-  /* Table */
-  .info-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .info-table th {
-    background: #f0f4fb;
-    color: var(--primary);
-    font-weight: 600;
-    padding: 10px 14px;
-    text-align: center;
-    border: 1px solid var(--border);
-    font-size: 13px;
-  }
-  .info-table td {
-    padding: 10px 14px;
-    border: 1px solid var(--border);
-    vertical-align: middle;
-  }
-  .info-table tr:hover td { background: #fafbfe; }
-  .cell-label {
-    background: var(--blue-light);
-    font-weight: 600;
-    color: var(--primary);
-    text-align: center;
-    font-size: 13px;
-  }
-  .cell-label-pink {
-    background: var(--pink-light);
-    font-weight: 600;
-    color: #8b3a8b;
-    text-align: center;
-    font-size: 13px;
-  }
-  .cell-highlight {
-    color: var(--primary);
-    font-weight: 500;
-  }
+/* ===== QUICK CARDS ===== */
+.quick-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.quick-card {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 14px 14px;
+  border-left: 4px solid var(--primary);
+  box-shadow: var(--shadow);
+}
+.quick-card.accent { border-left-color: var(--accent); }
+.quick-card .qlabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+.quick-card .qvalue {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.35;
+  word-break: keep-all;
+}
+.quick-card.accent .qvalue { color: var(--accent); }
 
-  /* Schedule table */
-  .schedule-table td {
-    text-align: center;
-  }
-  .schedule-table .exam-mid {
-    background: #e8f0fb;
-    color: var(--primary);
-    font-weight: 700;
-  }
-  .schedule-table .exam-final {
-    background: #fce8e8;
-    color: var(--red-text);
-    font-weight: 700;
-  }
-  .schedule-table .week-highlight {
-    background: #e8f0fb;
-    color: var(--primary);
-    font-weight: 700;
-  }
+/* ===== SECTION ===== */
+.section {
+  background: var(--surface);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 18px;
+  background: var(--primary);
+  color: #fff;
+}
+.section-num {
+  width: 26px; height: 26px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.section-title {
+  font-size: 15px;
+  font-weight: 700;
+}
+.section-body {
+  padding: 18px 16px;
+}
 
-  /* List styles */
-  .info-list {
-    list-style: none;
-    padding: 0;
-  }
-  .info-list li {
-    padding: 8px 0 8px 20px;
-    position: relative;
-    border-bottom: 1px solid #f0f4f8;
-    font-size: 14px;
-    line-height: 1.65;
-  }
-  .info-list li:last-child { border-bottom: none; }
-  .info-list li::before {
-    content: '•';
-    position: absolute;
-    left: 4px;
-    color: var(--primary);
-    font-weight: 700;
-  }
+/* ===== ALERT / CALLOUT ===== */
+.callout {
+  border-radius: 10px;
+  padding: 13px 15px;
+  margin: 12px 0;
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+.callout-icon { font-size: 17px; flex-shrink: 0; line-height: 1.5; }
+.callout-blue  { background: var(--blue-bg); border: 1px solid #bfd4f7; color: #1a3a7a; }
+.callout-warn  { background: #fffbeb; border: 1px solid #fcd34d; color: #78350f; }
+.callout-red   { background: #fff1f0; border: 1px solid #fca5a5; color: var(--red); }
+.callout-star  { background: var(--accent-soft); border: 1px solid #fdb78a; color: #7c2d00; }
 
-  /* Sub-list */
-  .sub-list {
-    margin-top: 6px;
-    padding-left: 16px;
-    list-style: none;
-  }
-  .sub-list li {
-    padding: 3px 0 3px 16px;
-    font-size: 13px;
-    color: var(--text-muted);
-    position: relative;
-    border: none;
-  }
-  .sub-list li::before {
-    content: '–';
-    position: absolute;
-    left: 0;
-    color: var(--text-muted);
-  }
+/* ===== INFO ROWS (key-value) ===== */
+.info-row {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  min-height: var(--touch);
+  align-items: stretch;
+}
+.info-row:last-child { border-bottom: none; }
+.info-key {
+  background: var(--blue-bg);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 11px 12px;
+  min-width: 90px;
+  max-width: 110px;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  word-break: keep-all;
+  flex-shrink: 0;
+}
+.info-key.pink { background: var(--pink-bg); color: #7b2f7b; }
+.info-val {
+  padding: 11px 12px;
+  flex: 1;
+  line-height: 1.6;
+  word-break: keep-all;
+}
 
-  /* Alert boxes */
-  .alert {
-    border-radius: 10px;
-    padding: 14px 18px;
-    margin: 14px 0;
-    font-size: 14px;
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  .alert-warning {
-    background: #fff8e1;
-    border: 1px solid #f5c842;
-    color: #7a5c00;
-  }
-  .alert-danger {
-    background: #fff0f0;
-    border: 1px solid #f5a0a0;
-    color: var(--red-text);
-  }
-  .alert-info {
-    background: var(--blue-light);
-    border: 1px solid #b0c8f0;
-    color: #1a3a7a;
-  }
-  .alert-star {
-    background: var(--accent-soft);
-    border: 1px solid #f5b080;
-    color: #7a3a00;
-  }
-  .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+/* ===== STANDARD TABLE (schedule etc) ===== */
+.std-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; }
+.std-table {
+  width: 100%;
+  min-width: 300px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.std-table th {
+  background: #f0f5fb;
+  color: var(--primary);
+  font-weight: 600;
+  padding: 10px 10px;
+  text-align: center;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.std-table td {
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  vertical-align: middle;
+  text-align: center;
+  font-size: 13px;
+}
+.std-table tr:nth-child(even) td { background: #fafbfe; }
+.td-date { font-weight: 700; color: var(--primary); }
+.td-exam-mid { background: #dbeafe !important; color: var(--primary); font-weight: 700; }
+.td-exam-final { background: #fee2e2 !important; color: var(--red); font-weight: 700; }
+.td-open { font-weight: 700; color: var(--primary); }
+.td-close { font-weight: 700; color: var(--accent); }
 
-  /* Note */
-  .note {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    padding: 4px 0 4px 16px;
-    position: relative;
-    line-height: 1.6;
-  }
-  .note::before {
-    content: '※';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: 12px;
-  }
+/* ===== COURSE TABLE ===== */
+.course-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.course-search {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  background: #fafbfe;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+.course-search:focus { border-color: var(--primary); background: #fff; }
+.filter-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.course-select {
+  padding: 11px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fafbfe;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 30px;
+  cursor: pointer;
+  width: 100%;
+}
+.course-select:focus { border-color: var(--primary); }
+.course-count {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  padding-left: 2px;
+}
 
-  /* Step flow */
-  .step-flow {
-    display: flex;
-    gap: 0;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 10px 0;
-    font-size: 13px;
-  }
-  .step-item {
-    background: var(--blue-light);
-    color: var(--primary);
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .step-arrow {
-    padding: 0 6px;
-    color: var(--text-muted);
-    font-size: 16px;
-  }
+/* Course cards (mobile-first — no wide table) */
+.course-cards { display: flex; flex-direction: column; gap: 8px; }
+.course-card {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.cc-dept {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.2px;
+}
+.cc-subject {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.cc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-top: 2px;
+}
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+.badge-req     { background: #dbeafe; color: #1e40af; }
+.badge-elec    { background: #dcfce7; color: #166534; }
+.badge-gyo-req { background: #fef9c3; color: #854d0e; }
+.badge-gyo     { background: #f3e8ff; color: #6b21a8; }
+.cc-prof { font-size: 12px; color: var(--muted); }
+.cc-code { font-size: 11px; color: #94a3b8; }
+.cc-grade { font-size: 12px; color: var(--muted); }
 
-  /* Contact grid */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 10px;
-    margin-top: 10px;
-  }
-  .contact-item {
-    background: #f8f9fc;
-    border-radius: 8px;
-    padding: 10px 14px;
-    font-size: 13px;
-    border-left: 3px solid var(--primary-light);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-  }
-  .contact-item .dept { font-weight: 600; color: var(--primary); }
-  .contact-item .tel { color: var(--text-muted); font-size: 12px; }
+.no-result {
+  text-align: center;
+  padding: 36px 20px;
+  color: var(--muted);
+  font-size: 14px;
+  display: none;
+}
 
-  /* Footer */
-  .page-footer {
-    text-align: center;
-    padding: 28px 24px;
-    background: var(--primary);
-    color: rgba(255,255,255,0.85);
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    margin-top: 10px;
-  }
-  .page-footer span { color: white; font-weight: 700; }
+/* ===== LIST ===== */
+.info-list { list-style: none; }
+.info-list li {
+  padding: 10px 0 10px 20px;
+  position: relative;
+  border-bottom: 1px solid #f0f4f8;
+  font-size: 14px;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+.info-list li:last-child { border-bottom: none; }
+.info-list li::before {
+  content: '•';
+  position: absolute;
+  left: 5px;
+  color: var(--primary);
+  font-weight: 700;
+}
+.sub-list { list-style: none; margin-top: 6px; padding-left: 0; }
+.sub-list li {
+  padding: 3px 0 3px 14px;
+  font-size: 13px;
+  color: var(--muted);
+  position: relative;
+  border: none;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+.sub-list li::before { content: '–'; position: absolute; left: 0; color: #94a3b8; }
 
-  /* Separator */
-  .sep { height: 1px; background: var(--border); margin: 16px 0; }
+/* ===== NOTE ===== */
+.note {
+  font-size: 12.5px;
+  color: var(--muted);
+  padding: 4px 0 4px 16px;
+  position: relative;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+.note::before { content: '※'; position: absolute; left: 0; color: var(--accent); font-size: 12px; }
 
-  /* Bold accent */
-  strong.accent { color: var(--red-text); }
-  strong.primary { color: var(--primary); }
+/* ===== STEP FLOW ===== */
+.step-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 10px 0;
+}
+.step-item {
+  background: var(--blue-bg);
+  color: var(--primary);
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.step-arrow { color: var(--muted); font-size: 14px; padding: 0 2px; }
 
-  /* Tag */
-  .tag {
-    display: inline-block;
-    background: var(--blue-light);
-    color: var(--primary);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-right: 4px;
-  }
-  .tag-red {
-    background: #fff0f0;
-    color: var(--red-text);
-  }
+/* ===== SEP ===== */
+.sep { height: 1px; background: var(--border); margin: 14px 0; }
 
-  @media (max-width: 600px) {
-    .page-header { padding: 36px 16px 28px; }
-    .section-header { padding: 14px 16px; }
-    .section-body { padding: 16px; }
-    .quick-cards { grid-template-columns: 1fr 1fr; }
-    .info-table { font-size: 13px; }
-    .info-table th, .info-table td { padding: 8px 10px; }
-    .contact-grid { grid-template-columns: 1fr; }
-  }
+/* ===== CONTACT ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+.contact-item {
+  background: #f8f9fc;
+  border-radius: 9px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--primary-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--touch);
+}
+.contact-dept { font-weight: 600; color: var(--primary); font-size: 14px; word-break: keep-all; }
+.contact-tel { color: var(--muted); font-size: 13px; white-space: nowrap; }
+.contact-tel a { color: inherit; text-decoration: none; }
+
+/* ===== TAGS ===== */
+.tag-red {
+  display: inline-block;
+  background: #fee2e2;
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 4px;
+}
+
+/* ===== FOOTER ===== */
+.page-footer {
+  text-align: center;
+  padding: 28px 20px;
+  background: var(--primary);
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  font-weight: 500;
+}
+.page-footer strong { color: #fff; font-size: 16px; }
+
+/* ===== DESKTOP ENHANCEMENTS ===== */
+@media (min-width: 600px) {
+  .container { padding: 28px 20px 60px; }
+  .quick-cards { grid-template-columns: repeat(4, 1fr); }
+  .section-header { padding: 16px 22px; }
+  .section-body { padding: 20px 22px; }
+  .info-key { min-width: 110px; max-width: 140px; }
+  .course-filters { flex-direction: row; flex-wrap: wrap; }
+  .course-search { flex: 1; min-width: 200px; }
+  .filter-row { flex: none; display: flex; grid-template-columns: unset; }
+  .course-select { width: auto; }
+  .contact-grid { grid-template-columns: 1fr 1fr; }
+
+  /* On wider screens, show table instead of cards */
+  .course-cards { display: none; }
+  .course-table-wrap { display: block !important; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; }
+}
+
+@media (max-width: 599px) {
+  .course-table-wrap { display: none; }
+}
 </style>
 </head>
 <body>
 
-<!-- Header -->
+<!-- HEADER -->
 <div class="page-header">
   <div class="header-badge">📢 공지사항</div>
   <h1>2026학년도 여름계절학기<br>수강신청 및 학사일정 안내</h1>
-  <div class="meta">글로벌사이버대학교 교학처 · 공지일: 2026년 5월 15일</div>
+  <div class="meta">글로벌사이버대학교 교학처 &middot; 공지일: 2026. 5. 15.</div>
 </div>
 
 <div class="container">
 
-  <!-- Quick Summary -->
+  <!-- QUICK CARDS -->
   <div class="quick-cards">
     <div class="quick-card accent">
-      <div class="label">📅 수강신청 기간</div>
-      <div class="value">5. 29(금) ~ 6. 4(목)</div>
+      <div class="qlabel">📅 수강신청 기간</div>
+      <div class="qvalue">5.29(금)&nbsp;~ 6.4(목)</div>
     </div>
     <div class="quick-card">
-      <div class="label">🎓 개강일</div>
-      <div class="value">6월 12일(목)</div>
+      <div class="qlabel">🎓 개강일</div>
+      <div class="qvalue">6월 12일(목)</div>
     </div>
     <div class="quick-card">
-      <div class="label">📝 중간고사</div>
-      <div class="value">7. 3(목) ~ 7. 4(금)</div>
+      <div class="qlabel">📝 중간고사</div>
+      <div class="qvalue">7.3(목)&nbsp;~ 7.4(금)</div>
     </div>
     <div class="quick-card">
-      <div class="label">📝 기말고사 · 종강</div>
-      <div class="value">7. 15~16 / 7. 16</div>
+      <div class="qlabel">🏁 기말·종강</div>
+      <div class="qvalue">7.15~16 / 7.16</div>
     </div>
   </div>
 
-  <!-- 1. 개설 교과목 -->
+  <!-- ① 개설 교과목 -->
   <div class="section">
     <div class="section-header">
-      <div class="section-number">1</div>
+      <div class="section-num">1</div>
       <div class="section-title">개설 교과목</div>
     </div>
     <div class="section-body">
 
-      <!-- 검색 필터 -->
-      <div style="margin-bottom:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-        <input type="text" id="courseSearch" placeholder="🔍  학과명, 과목명, 교강사 검색..."
-          oninput="filterCourses()"
-          style="flex:1; min-width:200px; padding:9px 14px; border:1px solid var(--border); border-radius:8px; font-size:14px; font-family:inherit; outline:none;">
-        <select id="deptFilter" onchange="filterCourses()"
-          style="padding:9px 12px; border:1px solid var(--border); border-radius:8px; font-size:13px; font-family:inherit; background:white; outline:none; color:var(--text);">
-          <option value="">전체 학과</option>
-          <option>뇌기반상담심리학과</option>
-          <option>뇌기반감정코칭학과</option>
-          <option>명상치료학과</option>
-          <option>뇌교육학과</option>
-          <option>브레인트레이닝학과</option>
-          <option>방송연예학과</option>
-          <option>미디어콘텐츠학과</option>
-          <option>AI영어학과</option>
-          <option>동양학과</option>
-          <option>선도문화학과</option>
-          <option>사회복지학부</option>
-          <option>스포츠건강학부</option>
-          <option>AI융합학부</option>
-          <option>교양학부</option>
-          <option>연계전공</option>
-        </select>
-        <select id="typeFilter" onchange="filterCourses()"
-          style="padding:9px 12px; border:1px solid var(--border); border-radius:8px; font-size:13px; font-family:inherit; background:white; outline:none; color:var(--text);">
-          <option value="">전체 이수구분</option>
-          <option>전공필수</option>
-          <option>전공선택</option>
-          <option>교양필수</option>
-          <option>교양선택</option>
-        </select>
+      <!-- 필터 -->
+      <div class="course-filters">
+        <input class="course-search" type="search" id="srch" placeholder="🔍  학과명, 과목명, 교강사 검색..." oninput="fc()" autocomplete="off">
+        <div class="filter-row">
+          <select class="course-select" id="fdept" onchange="fc()">
+            <option value="">전체 학과</option>
+            <option>뇌기반상담심리학과</option>
+            <option>뇌기반감정코칭학과</option>
+            <option>명상치료학과</option>
+            <option>뇌교육학과</option>
+            <option>브레인트레이닝학과</option>
+            <option>방송연예학과</option>
+            <option>미디어콘텐츠학과</option>
+            <option>AI영어학과</option>
+            <option>동양학과</option>
+            <option>선도문화학과</option>
+            <option>사회복지학부</option>
+            <option>스포츠건강학부</option>
+            <option>AI융합학부</option>
+            <option>교양학부</option>
+            <option>연계전공</option>
+          </select>
+          <select class="course-select" id="ftype" onchange="fc()">
+            <option value="">전체 이수구분</option>
+            <option>전공필수</option>
+            <option>전공선택</option>
+            <option>교양필수</option>
+            <option>교양선택</option>
+          </select>
+        </div>
       </div>
-      <div id="courseCount" style="font-size:12px; color:var(--text-muted); margin-bottom:10px;"></div>
+      <div class="course-count" id="cnt"></div>
 
-      <div style="overflow-x:auto;">
-      <table class="info-table" id="courseTable">
-        <thead>
-          <tr>
-            <th style="min-width:130px;">개설학과</th>
-            <th style="width:50px;">학년</th>
-            <th style="min-width:70px;">이수구분</th>
-            <th style="min-width:200px;">과목명</th>
-            <th style="width:70px;">교과목코드</th>
-            <th style="min-width:70px;">교강사</th>
-            <th style="width:45px;">학점</th>
-          </tr>
-        </thead>
-        <tbody id="courseBody">
-          <!-- 뇌기반상담심리학과 -->
-          <tr data-dept="뇌기반상담심리학과" data-type="전공필수"><td>뇌기반상담심리학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>상담심리학(구. 상담의 이론과 실제)</td><td>103038</td><td>고건영</td><td>3</td></tr>
-          <tr data-dept="뇌기반상담심리학과" data-type="전공선택"><td>뇌기반상담심리학과</td><td>1</td><td><span class="badge-elec">전공선택</span></td><td>상담심리학(구. 상담의 이론과 실제)</td><td>103038</td><td>고건영</td><td>3</td></tr>
-          <tr data-dept="뇌기반상담심리학과" data-type="전공선택"><td>뇌기반상담심리학과</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>두뇌의 구조와 기능론</td><td>900001</td><td>오창영</td><td>3</td></tr>
-          <!-- 뇌기반감정코칭학과 -->
-          <tr data-dept="뇌기반감정코칭학과" data-type="전공필수"><td>뇌기반감정코칭학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>명상치료</td><td>810101</td><td>한정현</td><td>3</td></tr>
-          <tr data-dept="뇌기반감정코칭학과" data-type="전공필수"><td>뇌기반감정코칭학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>사회심리학</td><td>810108</td><td>한정현</td><td>3</td></tr>
-          <tr data-dept="뇌기반감정코칭학과" data-type="전공필수"><td>뇌기반감정코칭학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>명상과 심리치료</td><td>810102</td><td>한정현</td><td>3</td></tr>
-          <!-- 명상치료학과 -->
-          <tr data-dept="명상치료학과" data-type="전공필수"><td>명상치료학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>융합시대의 뇌교육 입문</td><td>401035</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="명상치료학과" data-type="전공필수"><td>명상치료학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>뇌교육의 이해</td><td>401004</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="명상치료학과" data-type="전공선택"><td>명상치료학과</td><td>1</td><td><span class="badge-elec">전공선택</span></td><td>두뇌의 구조와 기능론</td><td>900001</td><td>오창영</td><td>3</td></tr>
-          <tr data-dept="명상치료학과" data-type="전공필수"><td>명상치료학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>뇌교육 심화</td><td>401034</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="명상치료학과" data-type="전공필수"><td>명상치료학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>뇌교육 심화 II</td><td>401038</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="명상치료학과" data-type="전공선택"><td>명상치료학과</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>러브유어셀프 : 체인지 프로젝트</td><td>401041</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="명상치료학과" data-type="전공선택"><td>명상치료학과</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>멘탈헬스UP, 두뇌트레이닝</td><td>401047</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="명상치료학과" data-type="전공필수"><td>명상치료학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>두뇌의 구조와 기능론</td><td>900001</td><td>오창영</td><td>3</td></tr>
-          <tr data-dept="명상치료학과" data-type="전공선택"><td>명상치료학과</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>감정노동힐링365</td><td>401033</td><td>오창영</td><td>3</td></tr>
-          <tr data-dept="명상치료학과" data-type="전공선택"><td>명상치료학과</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>창의성과 문제해결</td><td>401036</td><td>오창영</td><td>3</td></tr>
-          <!-- 뇌교육학과 -->
-          <tr data-dept="뇌교육학과" data-type="전공필수"><td>뇌교육학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>엔터테인먼트 산업의 이해</td><td>203002</td><td>천범주</td><td>3</td></tr>
-          <tr data-dept="뇌교육학과" data-type="전공필수"><td>뇌교육학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>케이팝산업의 이해(구.연예프로듀서실무)</td><td>203021</td><td>천범주</td><td>3</td></tr>
-          <tr data-dept="뇌교육학과" data-type="전공선택"><td>뇌교육학과</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>K-프로듀서(한류를 만드는 사람들)</td><td>203029</td><td>천범주</td><td>3</td></tr>
-          <!-- 브레인트레이닝학과 -->
-          <tr data-dept="브레인트레이닝학과" data-type="전공필수"><td>브레인트레이닝학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>문화콘텐츠 산업론</td><td>201002</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="브레인트레이닝학과" data-type="전공필수"><td>브레인트레이닝학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>콘텐츠기획입문</td><td>201004</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="브레인트레이닝학과" data-type="전공필수"><td>브레인트레이닝학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>지역문화상품과 축제사례연구</td><td>201018</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="브레인트레이닝학과" data-type="전공필수"><td>브레인트레이닝학과</td><td>4</td><td><span class="badge-req">전공필수</span></td><td>한일 식문화 디자인 입문</td><td>202045</td><td>손애경</td><td>3</td></tr>
-          <!-- 방송연예학과 -->
-          <tr data-dept="방송연예학과" data-type="전공필수"><td>방송연예학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>실전영어회화</td><td>601004</td><td>윤경주</td><td>3</td></tr>
-          <tr data-dept="방송연예학과" data-type="전공필수"><td>방송연예학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>언어의 이해</td><td>601002</td><td>윤경주</td><td>3</td></tr>
-          <tr data-dept="방송연예학과" data-type="전공필수"><td>방송연예학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>문화간 의사소통기술</td><td>601008</td><td>윤경주</td><td>3</td></tr>
-          <!-- 미디어콘텐츠학과 -->
-          <tr data-dept="미디어콘텐츠학과" data-type="전공필수"><td>미디어콘텐츠학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>명리학총론</td><td>501002</td><td>박영창</td><td>3</td></tr>
-          <tr data-dept="미디어콘텐츠학과" data-type="전공선택"><td>미디어콘텐츠학과</td><td>1</td><td><span class="badge-elec">전공선택</span></td><td>삼명통회연구</td><td>501049</td><td>김미석</td><td>3</td></tr>
-          <tr data-dept="미디어콘텐츠학과" data-type="전공필수"><td>미디어콘텐츠학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>명리학적천수강해</td><td>501005</td><td>박영창</td><td>3</td></tr>
-          <tr data-dept="미디어콘텐츠학과" data-type="전공선택"><td>미디어콘텐츠학과</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>명리신살통변론</td><td>501047</td><td>김미석</td><td>3</td></tr>
-          <tr data-dept="미디어콘텐츠학과" data-type="전공필수"><td>미디어콘텐츠학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>현대명리학연구</td><td>501026</td><td>박영창</td><td>3</td></tr>
-          <tr data-dept="미디어콘텐츠학과" data-type="전공필수"><td>미디어콘텐츠학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>명리일주론</td><td>501045</td><td>김미석</td><td>3</td></tr>
-          <tr data-dept="미디어콘텐츠학과" data-type="전공선택"><td>미디어콘텐츠학과</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>명리비결연구</td><td>501031</td><td>김미석</td><td>3</td></tr>
-          <!-- 상담심리학과 -->
-          <tr data-dept="AI영어학과" data-type="전공선택"><td>AI영어학과 (상담심리학과)</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>인간중심 빅데이터</td><td>330119</td><td>석광호</td><td>3</td></tr>
-          <!-- 선도문화학과 -->
-          <tr data-dept="선도문화학과" data-type="전공필수"><td>선도문화학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>한국사의 이해 I</td><td>900024</td><td>민성욱</td><td>3</td></tr>
-          <tr data-dept="선도문화학과" data-type="전공필수"><td>선도문화학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>한국문화와 국학운동</td><td>900040</td><td>민성욱</td><td>3</td></tr>
-          <tr data-dept="선도문화학과" data-type="전공필수"><td>선도문화학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>한국선도의 역사와 문화</td><td>530306</td><td>민성욱</td><td>3</td></tr>
-          <tr data-dept="선도문화학과" data-type="전공필수"><td>선도문화학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>인간완성학</td><td>530313</td><td>민성욱</td><td>3</td></tr>
-          <!-- 사회복지학부 -->
-          <tr data-dept="사회복지학부" data-type="전공필수"><td>사회복지학부</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>사회복지정책론</td><td>101022</td><td>오화영</td><td>3</td></tr>
-          <!-- 스포츠건강학부 -->
-          <tr data-dept="스포츠건강학부" data-type="전공필수"><td>스포츠건강학부</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>생활체조와 단전호흡</td><td>402008</td><td>이수경</td><td>3</td></tr>
-          <tr data-dept="스포츠건강학부" data-type="전공필수"><td>스포츠건강학부</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>건강생물학</td><td>402001</td><td>이수경</td><td>3</td></tr>
-          <tr data-dept="스포츠건강학부" data-type="전공선택"><td>스포츠건강학부</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>노인체육론</td><td>402021</td><td>이수경</td><td>3</td></tr>
-          <tr data-dept="스포츠건강학부" data-type="전공필수"><td>스포츠건강학부</td><td>4</td><td><span class="badge-req">전공필수</span></td><td>건강교육론</td><td>402026</td><td>이수경</td><td>3</td></tr>
-          <!-- AI융합학부 -->
-          <tr data-dept="AI융합학부" data-type="전공선택"><td>AI융합학부</td><td>1</td><td><span class="badge-elec">전공선택</span></td><td>메타버스 개론</td><td>330127</td><td>석광호</td><td>3</td></tr>
-          <tr data-dept="AI융합학부" data-type="전공필수"><td>AI융합학부</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>AI개론</td><td>330114</td><td>석광호</td><td>3</td></tr>
-          <tr data-dept="AI융합학부" data-type="전공필수"><td>AI융합학부</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>인간중심 빅데이터</td><td>330119</td><td>석광호</td><td>3</td></tr>
-          <tr data-dept="AI융합학부" data-type="전공선택"><td>AI융합학부</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>자료구조와 알고리즘</td><td>330138</td><td>박형용</td><td>3</td></tr>
-          <tr data-dept="AI융합학부" data-type="전공선택"><td>AI융합학부</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>빅데이터분석</td><td>330116</td><td>석광호</td><td>3</td></tr>
-          <tr data-dept="AI융합학부" data-type="전공선택"><td>AI융합학부</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>유니티 실무</td><td>330134</td><td>석광호</td><td>3</td></tr>
-          <tr data-dept="AI융합학부" data-type="전공선택"><td>AI융합학부</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>컴퓨터비전</td><td>330147</td><td>석광호</td><td>3</td></tr>
-          <!-- 교양학부 -->
-          <tr data-dept="교양학부" data-type="교양필수"><td>교양학부 (공통)</td><td>-</td><td><span class="badge-gyoyang-req">교양필수</span></td><td>지구경영으로의 초대</td><td>900020</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (인간과 사회)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>여성과 사회</td><td>101001</td><td>오화영</td><td>3</td></tr>
-          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (인간과 사회)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>평생교육론</td><td>401003</td><td>정봉영</td><td>3</td></tr>
-          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (인간과 사회)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>성인학습 및 상담</td><td>900010</td><td>정봉영</td><td>3</td></tr>
-          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (과학·기술·정보)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>디지털콘텐츠와 저작권</td><td>201015</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (역사·철학·문화)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>점성학</td><td>900072</td><td>조만섭</td><td>3</td></tr>
-          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (역사·철학·문화)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>대중문화와 예술</td><td>203005</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (역사·철학·문화)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>한국사의 이해 I</td><td>900024</td><td>민성욱</td><td>3</td></tr>
-          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (글로벌 소양)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>대중문화 속 생활 한국어</td><td>900085</td><td>손애경</td><td>3</td></tr>
-          <!-- 연계전공 -->
-          <tr data-dept="연계전공" data-type="전공선택"><td>지구경영융합전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>AI개론</td><td>330114</td><td>석광호</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공필수"><td>지구경영융합전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>뇌교육의 이해</td><td>401004</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>지구경영융합전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>뇌교육 심화</td><td>401034</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>지구경영융합전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>러브유어셀프 : 체인지 프로젝트</td><td>401041</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공필수"><td>주류양조·소믈리에 융합전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>한일 식문화 디자인 입문</td><td>202045</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공필수"><td>주류양조·소믈리에 융합전공</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>지역문화상품과 축제사례연구</td><td>201018</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공필수"><td>치매전문케어 연계전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>상담심리학(구. 상담의 이론과 실제)</td><td>103038</td><td>고건영</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>치매전문케어 연계전공</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>뇌교육의 이해</td><td>401004</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>치매전문케어 연계전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>노인체육론</td><td>402021</td><td>이수경</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공필수"><td>글로벌K문화 연계전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>문화콘텐츠 산업론</td><td>201002</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>콘텐츠기획입문</td><td>201004</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>문화간 의사소통기술</td><td>601008</td><td>윤경주</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>한국사의 이해 I</td><td>900024</td><td>민성욱</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>실전영어회화</td><td>601004</td><td>윤경주</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공필수"><td>글로벌K문화 연계전공</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>지역문화상품과 축제사례연구</td><td>201018</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>대중문화 속 생활 한국어</td><td>900085</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>언어의 이해</td><td>601002</td><td>윤경주</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공필수"><td>글로벌K문화 연계전공</td><td>4</td><td><span class="badge-req">전공필수</span></td><td>대중문화와 예술</td><td>203005</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>한국문화와 국학운동</td><td>900040</td><td>민성욱</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공필수"><td>AI콘텐츠 연계전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>콘텐츠기획입문</td><td>201004</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>AI콘텐츠 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>인간중심 빅데이터</td><td>330119</td><td>석광호</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>AI콘텐츠 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>메타버스 개론</td><td>330127</td><td>석광호</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공필수"><td>AI콘텐츠 연계전공</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>디지털콘텐츠와 저작권</td><td>201015</td><td>손애경</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공필수"><td>AI콘텐츠 연계전공</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>AI개론</td><td>330114</td><td>석광호</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>AI콘텐츠 연계전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>유니티 실무</td><td>330134</td><td>석광호</td><td>3</td></tr>
-          <!-- 브레인아로마 연계전공 -->
-          <tr data-dept="연계전공" data-type="전공필수"><td>브레인아로마 연계전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>뇌교육의 이해</td><td>401004</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공필수"><td>브레인아로마 연계전공</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>두뇌의 구조와 기능론</td><td>900001</td><td>오창영</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>브레인아로마 연계전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>뇌교육 심화</td><td>401034</td><td>장래혁</td><td>3</td></tr>
-          <tr data-dept="연계전공" data-type="전공선택"><td>브레인아로마 연계전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>멘탈헬스UP, 두뇌트레이닝</td><td>401047</td><td>장래혁</td><td>3</td></tr>
-        </tbody>
-      </table>
-      </div>
+      <!-- 모바일: 카드형 -->
+      <div class="course-cards" id="cards"></div>
+      <div class="no-result" id="noRes">검색 결과가 없습니다.</div>
 
-      <div id="noResult" style="display:none; text-align:center; padding:30px; color:var(--text-muted); font-size:14px;">
-        검색 결과가 없습니다.
+      <!-- 데스크탑: 테이블형 -->
+      <div class="course-table-wrap" style="display:none;">
+        <table class="std-table" id="ctbl">
+          <thead>
+            <tr>
+              <th>개설학과</th><th>학년</th><th>이수구분</th>
+              <th>과목명</th><th>교과목코드</th><th>교강사</th><th>학점</th>
+            </tr>
+          </thead>
+          <tbody id="ctbody"></tbody>
+        </table>
       </div>
 
     </div>
   </div>
 
-  <style>
-    .badge-req { background:#dbeafe; color:#1e40af; font-size:11px; font-weight:600; padding:2px 7px; border-radius:4px; white-space:nowrap; }
-    .badge-elec { background:#dcfce7; color:#166534; font-size:11px; font-weight:600; padding:2px 7px; border-radius:4px; white-space:nowrap; }
-    .badge-gyoyang-req { background:#fef9c3; color:#854d0e; font-size:11px; font-weight:600; padding:2px 7px; border-radius:4px; white-space:nowrap; }
-    .badge-gyoyang { background:#f3e8ff; color:#6b21a8; font-size:11px; font-weight:600; padding:2px 7px; border-radius:4px; white-space:nowrap; }
-    #courseTable tbody tr { transition: background 0.15s; }
-    #courseTable tbody tr:hover td { background: #f0f6ff; }
-    #courseSearch:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26,58,107,0.1); }
-  </style>
-
-  <script>
-    function filterCourses() {
-      const search = document.getElementById('courseSearch').value.toLowerCase();
-      const dept = document.getElementById('deptFilter').value;
-      const type = document.getElementById('typeFilter').value;
-      const rows = document.querySelectorAll('#courseBody tr');
-      let count = 0;
-      rows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        const rowDept = row.dataset.dept || '';
-        const rowType = row.dataset.type || '';
-        const matchSearch = !search || text.includes(search);
-        const matchDept = !dept || rowDept.includes(dept);
-        const matchType = !type || rowType === type;
-        if (matchSearch && matchDept && matchType) {
-          row.style.display = '';
-          count++;
-        } else {
-          row.style.display = 'none';
-        }
-      });
-      document.getElementById('courseCount').textContent = `총 ${count}개 과목 표시 중`;
-      document.getElementById('noResult').style.display = count === 0 ? 'block' : 'none';
-    }
-    // 초기 카운트
-    window.onload = () => filterCourses();
-  </script>
-
-  <!-- 2. 수강신청 기간 -->
+  <!-- ② 수강신청 기간 -->
   <div class="section">
     <div class="section-header">
-      <div class="section-number">2</div>
+      <div class="section-num">2</div>
       <div class="section-title">수강신청 기간</div>
     </div>
     <div class="section-body">
-      <div class="alert alert-star">
-        <div class="alert-icon">📅</div>
+      <div class="callout callout-star">
+        <div class="callout-icon">📅</div>
         <div><strong>2026. 5. 29.(금) ~ 6. 4.(목)</strong></div>
       </div>
     </div>
   </div>
 
-  <!-- 3. 수강신청 안내 -->
+  <!-- ③ 수강신청 안내 -->
   <div class="section">
     <div class="section-header">
-      <div class="section-number">3</div>
+      <div class="section-num">3</div>
       <div class="section-title">수강신청 안내</div>
     </div>
     <div class="section-body">
 
-      <p style="font-size:14px; font-weight:600; color:var(--primary); margin-bottom:10px;">가. 계절학기 수강신청 학점</p>
-      <table class="info-table">
-        <thead>
-          <tr>
-            <th style="width:35%">구분</th>
-            <th>신청 학점</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="cell-label">정규학생</td>
-            <td>
-              최대 <strong class="primary">9학점</strong><br>
-              <span style="font-size:13px; color:var(--text-muted);">직전학기와 합산하여 총 24학점 이내</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="cell-label-pink">시간제 등록생</td>
-            <td>
-              <strong class="accent">재수강만 가능</strong> · 최대 <strong>3학점</strong>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <p style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:10px;">가. 계절학기 수강신청 학점</p>
+      <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
+        <div class="info-row">
+          <div class="info-key">정규학생</div>
+          <div class="info-val">
+            최대 <strong>9학점</strong><br>
+            <span style="font-size:13px;color:var(--muted);">직전학기 합산 총 24학점 이내</span>
+          </div>
+        </div>
+        <div class="info-row" style="border-bottom:none;">
+          <div class="info-key pink">시간제<br>등록생</div>
+          <div class="info-val">
+            <strong style="color:var(--red);">재수강만 가능</strong> · 최대 <strong>3학점</strong>
+          </div>
+        </div>
+      </div>
 
-      <div class="note" style="margin-top:8px;">(참조위치1) 학교홈페이지 &gt; 학사안내 &gt; 수강 &gt; 계절학기</div>
-      <div class="note">(참조위치2) 마이페이지 &gt; LMS사용매뉴얼(재학생 헬프데스크) &gt; 수강신청</div>
-
+      <div class="note">(참조1) 학교홈페이지 &gt; 학사안내 &gt; 수강 &gt; 계절학기</div>
+      <div class="note">(참조2) 마이페이지 &gt; LMS사용매뉴얼 &gt; 수강신청</div>
       <div class="sep"></div>
 
       <ul class="info-list">
-        <li>
-          <strong>나.</strong> 조기졸업을 희망하는 학생의 경우, 계절학기 수강등록이 필요함.<br>
-          <span style="font-size:13px; color:var(--text-muted);">단, 정규학기 24학점 이수한 학생은 계절학기 수강신청이 불가함.</span>
-        </li>
-        <li><strong>다.</strong> 수강 학생수가 기준에 미달될 경우 폐강될 수 있음.</li>
-        <li>
-          <strong>라.</strong>
-          <span class="tag tag-red">중요</span>
-          계절학기 개강 후 수강취소에 대한 <strong class="accent">등록금 반환은 없음.</strong><br>
-          <span class="note" style="margin-top:4px;">관련규정: 학칙시행규칙 제8조 제4항</span>
-        </li>
-        <li>
-          <strong>마.</strong> 계절학기 중 취득한 학점은 정규학기와 별도로 성적표에 기재됨.<br>
-          <span style="font-size:13px; color:var(--text-muted);">총평점에는 포함되나, 장학 및 석차 등의 학점으로는 인정되지 않음.</span>
-        </li>
+        <li><strong>나.</strong> 조기졸업 희망 학생은 계절학기 수강등록 필요.<br>
+          <span style="color:var(--muted);font-size:13px;">단, 정규학기 24학점 이수 학생은 신청 불가.</span></li>
+        <li><strong>다.</strong> 수강 학생수 기준 미달 시 폐강될 수 있음.</li>
+        <li><strong>라.</strong> <span class="tag-red">⚠ 중요</span> 개강 후 수강취소 시 <strong style="color:var(--red);">등록금 반환 없음</strong><br>
+          <span class="note" style="display:inline-block;margin-top:4px;">관련규정: 학칙시행규칙 제8조 제4항</span></li>
+        <li><strong>마.</strong> 계절학기 학점은 정규학기와 별도 성적표 기재.<br>
+          <span style="color:var(--muted);font-size:13px;">총평점 포함되나 장학·석차 인정 제외.</span></li>
       </ul>
     </div>
   </div>
 
-  <!-- 4. 수업료 및 장학금 -->
+  <!-- ④ 수업료 및 장학금 -->
   <div class="section">
     <div class="section-header">
-      <div class="section-number">4</div>
+      <div class="section-num">4</div>
       <div class="section-title">수업료 및 장학금 안내</div>
     </div>
     <div class="section-body">
-      <ul class="info-list" style="margin-bottom:14px;">
-        <li><strong>가.</strong> 수업료: 정규학기와 동일</li>
-      </ul>
-
-      <p style="font-size:14px; font-weight:600; color:var(--primary); margin-bottom:10px;">나. 장학금</p>
-      <table class="info-table">
-        <thead>
-          <tr><th style="width:30%">구분</th><th>내용</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="cell-label">교외장학</td>
-            <td>계절학기는 <strong class="accent">국가장학금 지원대상 아님</strong></td>
-          </tr>
-          <tr>
-            <td class="cell-label-pink">교내장학</td>
-            <td>
-              2026학년도 1학기와 동일한 교내 장학 적용<br>
-              <span style="font-size:13px; color:var(--red-text); font-weight:600;">단, 아래 대상자는 계절학기 교내장학 제외:</span>
-              <ul class="sub-list">
-                <li>보훈장학(직계자녀)</li>
-                <li>새터민(북한이탈주민) 장학 대상</li>
-                <li>시간제등록생</li>
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="sep"></div>
-      <p style="font-size:13px; font-weight:600; color:var(--text-muted); margin-bottom:8px;">※ 한국장학재단 성적정보 제출 시 계절학기 성적 포함 여부</p>
-      <ul class="sub-list" style="padding-left:10px;">
-        <li>정규학기 성적이 80점 이상인 학생: 정규학기 성적만 제출</li>
-        <li>계절학기 포함 성적이 80점 이상인 학생: 계절학기 포함 성적 제출</li>
+      <p style="font-size:14px;margin-bottom:12px;">가. <strong>수업료:</strong> 정규학기와 동일</p>
+      <p style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:10px;">나. 장학금</p>
+      <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
+        <div class="info-row">
+          <div class="info-key">교외장학</div>
+          <div class="info-val"><strong style="color:var(--red);">국가장학금 지원대상 아님</strong></div>
+        </div>
+        <div class="info-row" style="border-bottom:none;">
+          <div class="info-key pink">교내장학</div>
+          <div class="info-val">
+            2026학년도 1학기와 동일 적용<br>
+            <span style="color:var(--red);font-weight:600;font-size:13px;">단, 아래 대상자 제외:</span>
+            <ul class="sub-list">
+              <li>보훈장학(직계자녀)</li>
+              <li>새터민(북한이탈주민) 장학 대상</li>
+              <li>시간제등록생</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px;">※ 한국장학재단 성적 제출 시 계절학기 성적 포함 여부</p>
+      <ul class="sub-list" style="padding-left:8px;">
+        <li>정규학기 성적 80점 이상: 정규학기 성적만 제출</li>
+        <li>계절학기 포함 성적 80점 이상: 계절학기 포함 제출</li>
       </ul>
     </div>
   </div>
 
-  <!-- 5. 수강신청 방법 -->
+  <!-- ⑤ 수강신청 방법 -->
   <div class="section">
     <div class="section-header">
-      <div class="section-number">5</div>
+      <div class="section-num">5</div>
       <div class="section-title">수강신청 방법</div>
     </div>
     <div class="section-body">
       <ul class="info-list">
         <li>
-          <strong>가. 수강신청 방법:</strong> 홈페이지 → 학번, 공동인증서, 네이버인증서 로그인 중 하나 선택<br>
-          <span class="note">인증서 로그인(공동인증서, 네이버인증서 중 하나): '강의보기, 시험응시'에 필수</span>
+          <strong>가. 수강신청 방법</strong><br>
+          홈페이지 → 학번, 공동인증서, 네이버인증서 로그인 중 선택<br>
+          <span class="note" style="display:block;margin-top:4px;">인증서 로그인: '강의보기·시험응시'에 필수</span>
         </li>
         <li>
           <strong>나. 수강신청 위치</strong>
-          <div style="margin-top:8px;">
-            <div class="step-flow">
-              <span class="step-item">마이페이지</span>
-              <span class="step-arrow">→</span>
-              <span class="step-item">내학사관리</span>
-              <span class="step-arrow">→</span>
-              <span class="step-item">수강신청</span>
-            </div>
+          <div class="step-flow" style="margin-top:8px;">
+            <span class="step-item">마이페이지</span>
+            <span class="step-arrow">→</span>
+            <span class="step-item">내학사관리</span>
+            <span class="step-arrow">→</span>
+            <span class="step-item">수강신청</span>
           </div>
         </li>
-        <li>
-          <strong>다. 수강신청 순서:</strong> 본인의 전공과목 및 졸업필수이수학점을 우선적으로 선택<br>
-          <span class="note">(참조위치1): 학교 홈페이지 &gt; 학사안내 &gt; 졸업 &gt; 정규졸업, 조기졸업</span>
-        </li>
-        <li><strong>라.</strong> 수강신청과목의 주/연계/복수/부 전공과목의 이수구분을 체크 (단, 단일전공은 제외)</li>
-        <li><strong>마.</strong> 과목 선택 후 [임시저장]하면, 화면 하단의 [나의 수강신청현황]으로 이동하여 임시저장됨.</li>
-        <li><strong>바.</strong> 마지막으로 <strong>[수강신청완료]</strong> 버튼 클릭하면 수강신청과목이 확정됨.</li>
+        <li><strong>다. 수강순서:</strong> 전공과목 및 졸업필수 학점 우선 선택</li>
+        <li><strong>라.</strong> 주/연계/복수/부 전공과목의 이수구분 체크 (단일전공 제외)</li>
+        <li><strong>마.</strong> 과목 선택 후 [임시저장] → 하단 [나의 수강신청현황] 확인</li>
+        <li><strong>바.</strong> 최종 <strong>[수강신청완료]</strong> 버튼 클릭 시 확정됨</li>
       </ul>
-
-      <div class="alert alert-star" style="margin-top:16px;">
-        <div class="alert-icon">⭐</div>
-        <div>
-          <strong>졸업학기에 '전공필수/선택, 교양필수/선택' 이수구분학점이 부족하지 않도록</strong><br>
-          <span style="font-size:13px;">본인 소속 학과의 '전공필수/선택, 교양필수/선택'을 우선적으로 이수하여 주세요.</span><br>
-          <span style="font-size:13px;">일반선택은 졸업학점에 포함되나, <strong>'전공필수/선택'</strong> 또는 <strong>'교양필수/선택'</strong>을 먼저 선택하여 본인 주전공의 필수이수학점을 우선적으로 이수하기를 권장합니다.</span>
+      <div class="callout callout-star" style="margin-top:14px;">
+        <div class="callout-icon">⭐</div>
+        <div style="font-size:14px;word-break:keep-all;">
+          <strong>졸업학기 학생: '전공필수/선택, 교양필수/선택' 학점 부족하지 않도록</strong><br>
+          일반선택보다 <strong>전공필수/선택</strong> 또는 <strong>교양필수/선택</strong>을 우선 이수하세요.
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 6. 등록금 납부 방법 -->
+  <!-- ⑥ 등록금 납부 방법 -->
   <div class="section">
     <div class="section-header">
-      <div class="section-number">6</div>
+      <div class="section-num">6</div>
       <div class="section-title">등록금 납부 방법</div>
     </div>
     <div class="section-body">
       <ul class="info-list">
-        <li><strong>가. 납부 결제방법:</strong> 신용카드, 실시간 계좌이체, 무통장 입금</li>
+        <li><strong>가. 결제방법:</strong> 신용카드 · 실시간 계좌이체 · 무통장 입금</li>
         <li>
-          <strong>나. 등록금 영수증 조회:</strong>
-          <div style="margin-top:8px;">
-            <div class="step-flow">
-              <span class="step-item">로그인</span>
-              <span class="step-arrow">→</span>
-              <span class="step-item">마이페이지</span>
-              <span class="step-arrow">→</span>
-              <span class="step-item">등록금납부</span>
-              <span class="step-arrow">→</span>
-              <span class="step-item">등록금납부내역</span>
-            </div>
+          <strong>나. 영수증 조회</strong>
+          <div class="step-flow" style="margin-top:8px;">
+            <span class="step-item">마이페이지</span>
+            <span class="step-arrow">→</span>
+            <span class="step-item">등록금납부</span>
+            <span class="step-arrow">→</span>
+            <span class="step-item">납부내역</span>
           </div>
         </li>
       </ul>
     </div>
   </div>
 
-  <!-- 7. 학사일정 -->
+  <!-- ⑦ 학사일정 -->
   <div class="section">
     <div class="section-header">
-      <div class="section-number">7</div>
+      <div class="section-num">7</div>
       <div class="section-title">학사일정</div>
     </div>
     <div class="section-body">
-      <table class="info-table">
-        <thead>
-          <tr><th style="width:45%">일정</th><th>내용</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="text-align:center;">5. 29 ~ 6. 4</td>
-            <td>여름계절학기 수강신청</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;">6. 5 ~ 6. 11</td>
-            <td>여름계절학기 등록금 납부</td>
-          </tr>
-          <tr>
-            <td style="text-align:center; font-weight:700; color:var(--primary);">6. 12</td>
-            <td style="font-weight:700; color:var(--primary);">🎓 여름계절학기 개강일</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;">6. 12 ~ 6. 15</td>
-            <td>여름계절학기 폐강공고 및 수강정정</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;">7. 3 ~ 7. 4</td>
-            <td>📝 여름계절학기 중간고사</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;">7. 15 ~ 7. 16</td>
-            <td>📝 여름계절학기 기말고사</td>
-          </tr>
-          <tr>
-            <td style="text-align:center; font-weight:700; color:var(--accent);">7. 16</td>
-            <td style="font-weight:700; color:var(--accent);">🏁 여름계절학기 종강일</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;">7. 22 ~ 7. 23</td>
-            <td>여름계절학기 성적확인 및 이의신청</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="std-table-wrap">
+        <table class="std-table">
+          <thead><tr><th>일정</th><th>내용</th></tr></thead>
+          <tbody>
+            <tr><td>5.29 ~ 6.4</td><td style="text-align:left;">여름계절학기 수강신청</td></tr>
+            <tr><td>6.5 ~ 6.11</td><td style="text-align:left;">등록금 납부</td></tr>
+            <tr><td class="td-open">6.12</td><td style="text-align:left;font-weight:700;color:var(--primary);">🎓 개강일</td></tr>
+            <tr><td>6.12 ~ 6.15</td><td style="text-align:left;">폐강공고 및 수강정정</td></tr>
+            <tr><td>7.3 ~ 7.4</td><td style="text-align:left;">📝 중간고사</td></tr>
+            <tr><td>7.15 ~ 7.16</td><td style="text-align:left;">📝 기말고사</td></tr>
+            <tr><td class="td-close">7.16</td><td style="text-align:left;font-weight:700;color:var(--accent);">🏁 종강일</td></tr>
+            <tr><td>7.22 ~ 7.23</td><td style="text-align:left;">성적확인 및 이의신청</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
-  <!-- 8. 주차별 수업일자 -->
+  <!-- ⑧ 주차별 수업일자 -->
   <div class="section">
     <div class="section-header">
-      <div class="section-number">8</div>
+      <div class="section-num">8</div>
       <div class="section-title">주차별 수업일자</div>
     </div>
     <div class="section-body">
-      <table class="info-table schedule-table">
-        <thead>
-          <tr>
-            <th>구분</th>
-            <th colspan="2">주차별</th>
-            <th>출석인정</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1주차</td><td>6월 12일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td>2주차</td><td>6월 12일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td>3주차</td><td>6월 12일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td>4주차</td><td>6월 12일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td>5주차</td><td>6월 12일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td>6주차</td><td>6월 12일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td>7주차</td><td>6월 12일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr class="week-highlight">
-            <td class="exam-mid">8주차</td>
-            <td class="exam-mid">7월 3일</td>
-            <td class="exam-mid">7월 4일</td>
-            <td class="exam-mid">중간고사</td>
-          </tr>
-          <tr>
-            <td>9주차</td><td>7월 5일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td>10주차</td><td>7월 5일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td>11주차</td><td>7월 5일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td>12주차</td><td>7월 5일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td>13주차</td><td>7월 5일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td>14주차</td><td>7월 5일</td><td>7월 16일</td><td>7월 16일</td>
-          </tr>
-          <tr>
-            <td class="exam-final">15주차</td>
-            <td class="exam-final">7월 15일</td>
-            <td class="exam-final">7월 16일</td>
-            <td class="exam-final">기말고사</td>
-          </tr>
-        </tbody>
-      </table>
-
+      <div class="std-table-wrap">
+        <table class="std-table">
+          <thead>
+            <tr><th>구분</th><th colspan="2">주차별</th><th>출석인정</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1주차</td><td>6.12</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td>2주차</td><td>6.12</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td>3주차</td><td>6.12</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td>4주차</td><td>6.12</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td>5주차</td><td>6.12</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td>6주차</td><td>6.12</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td>7주차</td><td>6.12</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td class="td-exam-mid">8주차</td><td class="td-exam-mid">7.3</td><td class="td-exam-mid">7.4</td><td class="td-exam-mid">중간고사</td></tr>
+            <tr><td>9주차</td><td>7.5</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td>10주차</td><td>7.5</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td>11주차</td><td>7.5</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td>12주차</td><td>7.5</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td>13주차</td><td>7.5</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td>14주차</td><td>7.5</td><td>7.16</td><td>7.16</td></tr>
+            <tr><td class="td-exam-final">15주차</td><td class="td-exam-final">7.15</td><td class="td-exam-final">7.16</td><td class="td-exam-final">기말고사</td></tr>
+          </tbody>
+        </table>
+      </div>
       <div class="sep"></div>
-      <p style="font-size:13px; font-weight:600; margin-bottom:8px; color:var(--text-muted);">※ 유의사항</p>
+      <p style="font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px;">※ 유의사항</p>
       <ul class="sub-list" style="padding-left:8px;">
-        <li>계절학기의 출석인정기간은 <strong>5주</strong>이며, <strong>종강일</strong>까지입니다.</li>
-        <li>계절학기 수업은 정규학기의 <strong>15주차 분량</strong>이며, 5주 동안 수강합니다.</li>
-        <li>과목에 따라 주차별로 게시되는 강의수가 다릅니다.</li>
-        <li>계절학기의 경우, 교수님의 재량에 따라 시험기간이 다를 수 있습니다.</li>
-        <li>강의계획서: 시험기간 / 시험유형 / 평가방법을 꼭 확인 바랍니다.</li>
+        <li>출석인정기간은 <strong>5주</strong>이며, 종강일까지입니다.</li>
+        <li>계절학기 수업은 정규학기 15주차 분량을 5주 동안 수강합니다.</li>
+        <li>과목에 따라 주차별 게시 강의수가 다릅니다.</li>
+        <li>교수님 재량에 따라 시험기간이 다를 수 있습니다.</li>
+        <li>강의계획서에서 시험기간·유형·평가방법을 꼭 확인하세요.</li>
       </ul>
     </div>
   </div>
 
-  <!-- 9. 학과 연락처 -->
+  <!-- ⑨ 학과 연락처 -->
   <div class="section">
     <div class="section-header">
-      <div class="section-number">9</div>
+      <div class="section-num">9</div>
       <div class="section-title">학과 연락처</div>
     </div>
     <div class="section-body">
       <div class="contact-grid">
-        <div class="contact-item">
-          <div class="dept">뇌기반상담심리학과</div>
-          <div class="tel">02-2160-1161</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">명상치료학과</div>
-          <div class="tel">02-2160-1158</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">뇌교육학과</div>
-          <div class="tel">02-2160-1156, 1157</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">브레인트레이닝학과</div>
-          <div class="tel">02-2160-1157</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">방송연예학과</div>
-          <div class="tel">02-2160-1171</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">미디어콘텐츠학과</div>
-          <div class="tel">041-415-6174</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">AI영어학과</div>
-          <div class="tel">02-2160-1166</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">동양학과</div>
-          <div class="tel">02-2160-1182~1184</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">선도문화학과</div>
-          <div class="tel">041-415-6184</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">사회복지학부</div>
-          <div class="tel">041-415-6158</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">스포츠건강학부</div>
-          <div class="tel">041-415-6169</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">경영학부(재테크·자산관리)</div>
-          <div class="tel">041-415-6176</div>
-        </div>
-        <div class="contact-item">
-          <div class="dept">AI융합학부</div>
-          <div class="tel">02-2160-1148</div>
-        </div>
+        <div class="contact-item"><span class="contact-dept">뇌기반상담심리학과</span><span class="contact-tel"><a href="tel:0221601161">02-2160-1161</a></span></div>
+        <div class="contact-item"><span class="contact-dept">명상치료학과</span><span class="contact-tel"><a href="tel:0221601158">02-2160-1158</a></span></div>
+        <div class="contact-item"><span class="contact-dept">뇌교육학과</span><span class="contact-tel"><a href="tel:0221601156">02-2160-1156/1157</a></span></div>
+        <div class="contact-item"><span class="contact-dept">브레인트레이닝학과</span><span class="contact-tel"><a href="tel:0221601157">02-2160-1157</a></span></div>
+        <div class="contact-item"><span class="contact-dept">방송연예학과</span><span class="contact-tel"><a href="tel:0221601171">02-2160-1171</a></span></div>
+        <div class="contact-item"><span class="contact-dept">미디어콘텐츠학과</span><span class="contact-tel"><a href="tel:0414156174">041-415-6174</a></span></div>
+        <div class="contact-item"><span class="contact-dept">AI영어학과</span><span class="contact-tel"><a href="tel:0221601166">02-2160-1166</a></span></div>
+        <div class="contact-item"><span class="contact-dept">동양학과</span><span class="contact-tel"><a href="tel:0221601182">02-2160-1182~1184</a></span></div>
+        <div class="contact-item"><span class="contact-dept">선도문화학과</span><span class="contact-tel"><a href="tel:0414156184">041-415-6184</a></span></div>
+        <div class="contact-item"><span class="contact-dept">사회복지학부</span><span class="contact-tel"><a href="tel:0414156158">041-415-6158</a></span></div>
+        <div class="contact-item"><span class="contact-dept">스포츠건강학부</span><span class="contact-tel"><a href="tel:0414156169">041-415-6169</a></span></div>
+        <div class="contact-item"><span class="contact-dept">경영학부(재테크·자산관리)</span><span class="contact-tel"><a href="tel:0414156176">041-415-6176</a></span></div>
+        <div class="contact-item"><span class="contact-dept">AI융합학부</span><span class="contact-tel"><a href="tel:0221601148">02-2160-1148</a></span></div>
       </div>
-
       <div class="sep"></div>
-
-      <p style="font-size:13px; font-weight:600; color:var(--primary); margin-bottom:8px;">○ 시간제등록생 수강신청 문의</p>
-      <ul class="sub-list" style="padding-left:10px;">
-        <li>사회복지현장실습: 041-415-6127</li>
-        <li>평생교육실습: 041-415-6191</li>
-        <li>그 외 과목: 각 과목별 소속 학과 사무실</li>
+      <p style="font-size:13px;font-weight:600;color:var(--primary);margin-bottom:8px;">○ 시간제등록생 문의</p>
+      <ul class="sub-list" style="padding-left:8px;">
+        <li>사회복지현장실습: <a href="tel:0414156127" style="color:inherit;">041-415-6127</a></li>
+        <li>평생교육실습: <a href="tel:0414156191" style="color:inherit;">041-415-6191</a></li>
+        <li>그 외 과목: 각 소속 학과 사무실</li>
       </ul>
-
-      <div style="margin-top:12px; font-size:13px;">
-        <p>○ 수업장애센터: <strong>041-415-6120</strong></p>
-        <p style="margin-top:4px;">○ 대표번호: <strong>1577-1786</strong></p>
+      <div style="margin-top:12px;font-size:14px;line-height:2;">
+        <p>○ 수업장애센터: <a href="tel:0414156120" style="color:var(--primary);font-weight:600;">041-415-6120</a></p>
+        <p>○ 대표번호: <a href="tel:15771786" style="color:var(--primary);font-weight:600;">1577-1786</a></p>
       </div>
     </div>
   </div>
 
-</div>
+</div><!-- /container -->
 
-<!-- Footer -->
 <div class="page-footer">
-  <span>글로벌사이버대학교 교학처</span>
+  <strong>글로벌사이버대학교 교학처</strong>
 </div>
 
+<script>
+// ===== 과목 데이터 =====
+const COURSES = [
+  // 뇌기반상담심리학과
+  {dept:'뇌기반상담심리학과',grade:'1',type:'전공필수',subject:'상담심리학(구. 상담의 이론과 실제)',code:'103038',prof:'고건영',credit:3},
+  {dept:'뇌기반상담심리학과',grade:'1',type:'전공선택',subject:'상담심리학(구. 상담의 이론과 실제)',code:'103038',prof:'고건영',credit:3},
+  {dept:'뇌기반상담심리학과',grade:'2',type:'전공선택',subject:'두뇌의 구조와 기능론',code:'900001',prof:'오창영',credit:3},
+  // 뇌기반감정코칭학과
+  {dept:'뇌기반감정코칭학과',grade:'1',type:'전공필수',subject:'명상치료',code:'810101',prof:'한정현',credit:3},
+  {dept:'뇌기반감정코칭학과',grade:'2',type:'전공필수',subject:'사회심리학',code:'810108',prof:'한정현',credit:3},
+  {dept:'뇌기반감정코칭학과',grade:'2',type:'전공필수',subject:'명상과 심리치료',code:'810102',prof:'한정현',credit:3},
+  // 명상치료학과
+  {dept:'명상치료학과',grade:'1',type:'전공필수',subject:'융합시대의 뇌교육 입문',code:'401035',prof:'장래혁',credit:3},
+  {dept:'명상치료학과',grade:'1',type:'전공필수',subject:'뇌교육의 이해',code:'401004',prof:'장래혁',credit:3},
+  {dept:'명상치료학과',grade:'1',type:'전공선택',subject:'두뇌의 구조와 기능론',code:'900001',prof:'오창영',credit:3},
+  {dept:'명상치료학과',grade:'2',type:'전공필수',subject:'뇌교육 심화',code:'401034',prof:'장래혁',credit:3},
+  {dept:'명상치료학과',grade:'3',type:'전공필수',subject:'뇌교육 심화 II',code:'401038',prof:'장래혁',credit:3},
+  {dept:'명상치료학과',grade:'3',type:'전공선택',subject:'러브유어셀프 : 체인지 프로젝트',code:'401041',prof:'장래혁',credit:3},
+  {dept:'명상치료학과',grade:'4',type:'전공선택',subject:'멘탈헬스UP, 두뇌트레이닝',code:'401047',prof:'장래혁',credit:3},
+  {dept:'명상치료학과',grade:'1',type:'전공필수',subject:'두뇌의 구조와 기능론',code:'900001',prof:'오창영',credit:3},
+  {dept:'명상치료학과',grade:'2',type:'전공선택',subject:'감정노동힐링365',code:'401033',prof:'오창영',credit:3},
+  {dept:'명상치료학과',grade:'3',type:'전공선택',subject:'창의성과 문제해결',code:'401036',prof:'오창영',credit:3},
+  // 뇌교육학과
+  {dept:'뇌교육학과',grade:'1',type:'전공필수',subject:'엔터테인먼트 산업의 이해',code:'203002',prof:'천범주',credit:3},
+  {dept:'뇌교육학과',grade:'3',type:'전공필수',subject:'케이팝산업의 이해(구.연예프로듀서실무)',code:'203021',prof:'천범주',credit:3},
+  {dept:'뇌교육학과',grade:'4',type:'전공선택',subject:'K-프로듀서(한류를 만드는 사람들)',code:'203029',prof:'천범주',credit:3},
+  // 브레인트레이닝학과
+  {dept:'브레인트레이닝학과',grade:'1',type:'전공필수',subject:'문화콘텐츠 산업론',code:'201002',prof:'손애경',credit:3},
+  {dept:'브레인트레이닝학과',grade:'2',type:'전공필수',subject:'콘텐츠기획입문',code:'201004',prof:'손애경',credit:3},
+  {dept:'브레인트레이닝학과',grade:'3',type:'전공필수',subject:'지역문화상품과 축제사례연구',code:'201018',prof:'손애경',credit:3},
+  {dept:'브레인트레이닝학과',grade:'4',type:'전공필수',subject:'한일 식문화 디자인 입문',code:'202045',prof:'손애경',credit:3},
+  // 방송연예학과
+  {dept:'방송연예학과',grade:'1',type:'전공필수',subject:'실전영어회화',code:'601004',prof:'윤경주',credit:3},
+  {dept:'방송연예학과',grade:'1',type:'전공필수',subject:'언어의 이해',code:'601002',prof:'윤경주',credit:3},
+  {dept:'방송연예학과',grade:'2',type:'전공필수',subject:'문화간 의사소통기술',code:'601008',prof:'윤경주',credit:3},
+  // 미디어콘텐츠학과 (동양학과)
+  {dept:'미디어콘텐츠학과',grade:'1',type:'전공필수',subject:'명리학총론',code:'501002',prof:'박영창',credit:3},
+  {dept:'미디어콘텐츠학과',grade:'1',type:'전공선택',subject:'삼명통회연구',code:'501049',prof:'김미석',credit:3},
+  {dept:'미디어콘텐츠학과',grade:'2',type:'전공필수',subject:'명리학적천수강해',code:'501005',prof:'박영창',credit:3},
+  {dept:'미디어콘텐츠학과',grade:'2',type:'전공선택',subject:'명리신살통변론',code:'501047',prof:'김미석',credit:3},
+  {dept:'미디어콘텐츠학과',grade:'3',type:'전공필수',subject:'현대명리학연구',code:'501026',prof:'박영창',credit:3},
+  {dept:'미디어콘텐츠학과',grade:'3',type:'전공필수',subject:'명리일주론',code:'501045',prof:'김미석',credit:3},
+  {dept:'미디어콘텐츠학과',grade:'4',type:'전공선택',subject:'명리비결연구',code:'501031',prof:'김미석',credit:3},
+  // AI영어학과
+  {dept:'AI영어학과',grade:'3',type:'전공선택',subject:'인간중심 빅데이터',code:'330119',prof:'석광호',credit:3},
+  // 선도문화학과
+  {dept:'선도문화학과',grade:'1',type:'전공필수',subject:'한국사의 이해 I',code:'900024',prof:'민성욱',credit:3},
+  {dept:'선도문화학과',grade:'1',type:'전공필수',subject:'한국문화와 국학운동',code:'900040',prof:'민성욱',credit:3},
+  {dept:'선도문화학과',grade:'2',type:'전공필수',subject:'한국선도의 역사와 문화',code:'530306',prof:'민성욱',credit:3},
+  {dept:'선도문화학과',grade:'3',type:'전공필수',subject:'인간완성학',code:'530313',prof:'민성욱',credit:3},
+  // 사회복지학부
+  {dept:'사회복지학부',grade:'3',type:'전공필수',subject:'사회복지정책론',code:'101022',prof:'오화영',credit:3},
+  // 스포츠건강학부
+  {dept:'스포츠건강학부',grade:'1',type:'전공필수',subject:'생활체조와 단전호흡',code:'402008',prof:'이수경',credit:3},
+  {dept:'스포츠건강학부',grade:'2',type:'전공필수',subject:'건강생물학',code:'402001',prof:'이수경',credit:3},
+  {dept:'스포츠건강학부',grade:'3',type:'전공선택',subject:'노인체육론',code:'402021',prof:'이수경',credit:3},
+  {dept:'스포츠건강학부',grade:'4',type:'전공필수',subject:'건강교육론',code:'402026',prof:'이수경',credit:3},
+  // AI융합학부
+  {dept:'AI융합학부',grade:'1',type:'전공선택',subject:'메타버스 개론',code:'330127',prof:'석광호',credit:3},
+  {dept:'AI융합학부',grade:'2',type:'전공필수',subject:'AI개론',code:'330114',prof:'석광호',credit:3},
+  {dept:'AI융합학부',grade:'2',type:'전공필수',subject:'인간중심 빅데이터',code:'330119',prof:'석광호',credit:3},
+  {dept:'AI융합학부',grade:'2',type:'전공선택',subject:'자료구조와 알고리즘',code:'330138',prof:'박형용',credit:3},
+  {dept:'AI융합학부',grade:'3',type:'전공선택',subject:'빅데이터분석',code:'330116',prof:'석광호',credit:3},
+  {dept:'AI융합학부',grade:'4',type:'전공선택',subject:'유니티 실무',code:'330134',prof:'석광호',credit:3},
+  {dept:'AI융합학부',grade:'4',type:'전공선택',subject:'컴퓨터비전',code:'330147',prof:'석광호',credit:3},
+  // 교양학부
+  {dept:'교양학부',grade:'-',type:'교양필수',subject:'지구경영으로의 초대',code:'900020',prof:'장래혁',credit:3},
+  {dept:'교양학부',grade:'-',type:'교양선택',subject:'여성과 사회',code:'101001',prof:'오화영',credit:3},
+  {dept:'교양학부',grade:'-',type:'교양선택',subject:'평생교육론',code:'401003',prof:'정봉영',credit:3},
+  {dept:'교양학부',grade:'-',type:'교양선택',subject:'성인학습 및 상담',code:'900010',prof:'정봉영',credit:3},
+  {dept:'교양학부',grade:'-',type:'교양선택',subject:'디지털콘텐츠와 저작권',code:'201015',prof:'손애경',credit:3},
+  {dept:'교양학부',grade:'-',type:'교양선택',subject:'점성학',code:'900072',prof:'조만섭',credit:3},
+  {dept:'교양학부',grade:'-',type:'교양선택',subject:'대중문화와 예술',code:'203005',prof:'손애경',credit:3},
+  {dept:'교양학부',grade:'-',type:'교양선택',subject:'한국사의 이해 I',code:'900024',prof:'민성욱',credit:3},
+  {dept:'교양학부',grade:'-',type:'교양선택',subject:'대중문화 속 생활 한국어',code:'900085',prof:'손애경',credit:3},
+  // 연계전공
+  {dept:'연계전공',grade:'2',type:'전공선택',subject:'AI개론',code:'330114',prof:'석광호',credit:3,sub:'지구경영융합전공'},
+  {dept:'연계전공',grade:'2',type:'전공필수',subject:'뇌교육의 이해',code:'401004',prof:'장래혁',credit:3,sub:'지구경영융합전공'},
+  {dept:'연계전공',grade:'2',type:'전공선택',subject:'뇌교육 심화',code:'401034',prof:'장래혁',credit:3,sub:'지구경영융합전공'},
+  {dept:'연계전공',grade:'4',type:'전공선택',subject:'러브유어셀프 : 체인지 프로젝트',code:'401041',prof:'장래혁',credit:3,sub:'지구경영융합전공'},
+  {dept:'연계전공',grade:'2',type:'전공필수',subject:'한일 식문화 디자인 입문',code:'202045',prof:'손애경',credit:3,sub:'주류양조·소믈리에 융합전공'},
+  {dept:'연계전공',grade:'3',type:'전공필수',subject:'지역문화상품과 축제사례연구',code:'201018',prof:'손애경',credit:3,sub:'주류양조·소믈리에 융합전공'},
+  {dept:'연계전공',grade:'2',type:'전공필수',subject:'상담심리학(구. 상담의 이론과 실제)',code:'103038',prof:'고건영',credit:3,sub:'치매전문케어 연계전공'},
+  {dept:'연계전공',grade:'3',type:'전공선택',subject:'뇌교육의 이해',code:'401004',prof:'장래혁',credit:3,sub:'치매전문케어 연계전공'},
+  {dept:'연계전공',grade:'4',type:'전공선택',subject:'노인체육론',code:'402021',prof:'이수경',credit:3,sub:'치매전문케어 연계전공'},
+  {dept:'연계전공',grade:'2',type:'전공필수',subject:'문화콘텐츠 산업론',code:'201002',prof:'손애경',credit:3,sub:'글로벌K문화 연계전공'},
+  {dept:'연계전공',grade:'2',type:'전공선택',subject:'콘텐츠기획입문',code:'201004',prof:'손애경',credit:3,sub:'글로벌K문화 연계전공'},
+  {dept:'연계전공',grade:'2',type:'전공선택',subject:'문화간 의사소통기술',code:'601008',prof:'윤경주',credit:3,sub:'글로벌K문화 연계전공'},
+  {dept:'연계전공',grade:'2',type:'전공선택',subject:'한국사의 이해 I',code:'900024',prof:'민성욱',credit:3,sub:'글로벌K문화 연계전공'},
+  {dept:'연계전공',grade:'2',type:'전공선택',subject:'실전영어회화',code:'601004',prof:'윤경주',credit:3,sub:'글로벌K문화 연계전공'},
+  {dept:'연계전공',grade:'3',type:'전공필수',subject:'지역문화상품과 축제사례연구',code:'201018',prof:'손애경',credit:3,sub:'글로벌K문화 연계전공'},
+  {dept:'연계전공',grade:'3',type:'전공선택',subject:'대중문화 속 생활 한국어',code:'900085',prof:'손애경',credit:3,sub:'글로벌K문화 연계전공'},
+  {dept:'연계전공',grade:'3',type:'전공선택',subject:'언어의 이해',code:'601002',prof:'윤경주',credit:3,sub:'글로벌K문화 연계전공'},
+  {dept:'연계전공',grade:'4',type:'전공필수',subject:'대중문화와 예술',code:'203005',prof:'손애경',credit:3,sub:'글로벌K문화 연계전공'},
+  {dept:'연계전공',grade:'4',type:'전공선택',subject:'한국문화와 국학운동',code:'900040',prof:'민성욱',credit:3,sub:'글로벌K문화 연계전공'},
+  {dept:'연계전공',grade:'2',type:'전공필수',subject:'콘텐츠기획입문',code:'201004',prof:'손애경',credit:3,sub:'AI콘텐츠 연계전공'},
+  {dept:'연계전공',grade:'2',type:'전공선택',subject:'인간중심 빅데이터',code:'330119',prof:'석광호',credit:3,sub:'AI콘텐츠 연계전공'},
+  {dept:'연계전공',grade:'2',type:'전공선택',subject:'메타버스 개론',code:'330127',prof:'석광호',credit:3,sub:'AI콘텐츠 연계전공'},
+  {dept:'연계전공',grade:'3',type:'전공필수',subject:'디지털콘텐츠와 저작권',code:'201015',prof:'손애경',credit:3,sub:'AI콘텐츠 연계전공'},
+  {dept:'연계전공',grade:'3',type:'전공필수',subject:'AI개론',code:'330114',prof:'석광호',credit:3,sub:'AI콘텐츠 연계전공'},
+  {dept:'연계전공',grade:'4',type:'전공선택',subject:'유니티 실무',code:'330134',prof:'석광호',credit:3,sub:'AI콘텐츠 연계전공'},
+  {dept:'연계전공',grade:'2',type:'전공필수',subject:'뇌교육의 이해',code:'401004',prof:'장래혁',credit:3,sub:'브레인아로마 연계전공'},
+  {dept:'연계전공',grade:'3',type:'전공필수',subject:'두뇌의 구조와 기능론',code:'900001',prof:'오창영',credit:3,sub:'브레인아로마 연계전공'},
+  {dept:'연계전공',grade:'4',type:'전공선택',subject:'뇌교육 심화',code:'401034',prof:'장래혁',credit:3,sub:'브레인아로마 연계전공'},
+  {dept:'연계전공',grade:'4',type:'전공선택',subject:'멘탈헬스UP, 두뇌트레이닝',code:'401047',prof:'장래혁',credit:3,sub:'브레인아로마 연계전공'},
+];
+
+function badgeClass(t) {
+  if(t==='전공필수') return 'badge badge-req';
+  if(t==='전공선택') return 'badge badge-elec';
+  if(t==='교양필수') return 'badge badge-gyo-req';
+  return 'badge badge-gyo';
+}
+
+function fc() {
+  const q = document.getElementById('srch').value.toLowerCase();
+  const d = document.getElementById('fdept').value;
+  const t = document.getElementById('ftype').value;
+
+  const filtered = COURSES.filter(c => {
+    const txt = (c.dept+c.subject+c.prof+(c.sub||'')).toLowerCase();
+    return (!q || txt.includes(q))
+        && (!d || c.dept === d)
+        && (!t || c.type === t);
+  });
+
+  document.getElementById('cnt').textContent = `총 ${filtered.length}개 과목`;
+
+  // 카드형 (모바일)
+  const cardsEl = document.getElementById('cards');
+  cardsEl.innerHTML = filtered.map(c => `
+    <div class="course-card">
+      <div class="cc-dept">${c.sub ? c.sub : c.dept}</div>
+      <div class="cc-subject">${c.subject}</div>
+      <div class="cc-meta">
+        <span class="${badgeClass(c.type)}">${c.type}</span>
+        <span class="cc-grade">${c.grade !== '-' ? c.grade+'학년' : '교양'}</span>
+        <span class="cc-prof">👨‍🏫 ${c.prof}</span>
+        <span class="cc-code">${c.code}</span>
+      </div>
+    </div>
+  `).join('');
+
+  // 테이블형 (데스크탑)
+  const tbody = document.getElementById('ctbody');
+  tbody.innerHTML = filtered.map(c => `
+    <tr>
+      <td style="text-align:left;">${c.sub ? c.sub : c.dept}</td>
+      <td>${c.grade}</td>
+      <td><span class="${badgeClass(c.type)}">${c.type}</span></td>
+      <td style="text-align:left;">${c.subject}</td>
+      <td>${c.code}</td>
+      <td>${c.prof}</td>
+      <td>${c.credit}</td>
+    </tr>
+  `).join('');
+
+  document.getElementById('noRes').style.display = filtered.length === 0 ? 'block' : 'none';
+}
+
+fc(); // 초기 렌더
+</script>
 </body>
 </html>
