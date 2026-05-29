@@ -436,13 +436,207 @@
       <div class="section-title">개설 교과목</div>
     </div>
     <div class="section-body">
-      <p style="font-size:14px; color:var(--text-muted);">붙임 파일을 참조하세요.</p>
-      <div class="alert alert-info" style="margin-top:12px;">
-        <div class="alert-icon">📎</div>
-        <div>붙임파일: <strong>2026학년도 여름계절학기 개설교과목.pdf</strong></div>
+
+      <!-- 검색 필터 -->
+      <div style="margin-bottom:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <input type="text" id="courseSearch" placeholder="🔍  학과명, 과목명, 교강사 검색..."
+          oninput="filterCourses()"
+          style="flex:1; min-width:200px; padding:9px 14px; border:1px solid var(--border); border-radius:8px; font-size:14px; font-family:inherit; outline:none;">
+        <select id="deptFilter" onchange="filterCourses()"
+          style="padding:9px 12px; border:1px solid var(--border); border-radius:8px; font-size:13px; font-family:inherit; background:white; outline:none; color:var(--text);">
+          <option value="">전체 학과</option>
+          <option>뇌기반상담심리학과</option>
+          <option>뇌기반감정코칭학과</option>
+          <option>명상치료학과</option>
+          <option>뇌교육학과</option>
+          <option>브레인트레이닝학과</option>
+          <option>방송연예학과</option>
+          <option>미디어콘텐츠학과</option>
+          <option>AI영어학과</option>
+          <option>동양학과</option>
+          <option>선도문화학과</option>
+          <option>사회복지학부</option>
+          <option>스포츠건강학부</option>
+          <option>AI융합학부</option>
+          <option>교양학부</option>
+          <option>연계전공</option>
+        </select>
+        <select id="typeFilter" onchange="filterCourses()"
+          style="padding:9px 12px; border:1px solid var(--border); border-radius:8px; font-size:13px; font-family:inherit; background:white; outline:none; color:var(--text);">
+          <option value="">전체 이수구분</option>
+          <option>전공필수</option>
+          <option>전공선택</option>
+          <option>교양필수</option>
+          <option>교양선택</option>
+        </select>
       </div>
+      <div id="courseCount" style="font-size:12px; color:var(--text-muted); margin-bottom:10px;"></div>
+
+      <div style="overflow-x:auto;">
+      <table class="info-table" id="courseTable">
+        <thead>
+          <tr>
+            <th style="min-width:130px;">개설학과</th>
+            <th style="width:50px;">학년</th>
+            <th style="min-width:70px;">이수구분</th>
+            <th style="min-width:200px;">과목명</th>
+            <th style="width:70px;">교과목코드</th>
+            <th style="min-width:70px;">교강사</th>
+            <th style="width:45px;">학점</th>
+          </tr>
+        </thead>
+        <tbody id="courseBody">
+          <!-- 뇌기반상담심리학과 -->
+          <tr data-dept="뇌기반상담심리학과" data-type="전공필수"><td>뇌기반상담심리학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>상담심리학(구. 상담의 이론과 실제)</td><td>103038</td><td>고건영</td><td>3</td></tr>
+          <tr data-dept="뇌기반상담심리학과" data-type="전공선택"><td>뇌기반상담심리학과</td><td>1</td><td><span class="badge-elec">전공선택</span></td><td>상담심리학(구. 상담의 이론과 실제)</td><td>103038</td><td>고건영</td><td>3</td></tr>
+          <tr data-dept="뇌기반상담심리학과" data-type="전공선택"><td>뇌기반상담심리학과</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>두뇌의 구조와 기능론</td><td>900001</td><td>오창영</td><td>3</td></tr>
+          <!-- 뇌기반감정코칭학과 -->
+          <tr data-dept="뇌기반감정코칭학과" data-type="전공필수"><td>뇌기반감정코칭학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>명상치료</td><td>810101</td><td>한정현</td><td>3</td></tr>
+          <tr data-dept="뇌기반감정코칭학과" data-type="전공필수"><td>뇌기반감정코칭학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>사회심리학</td><td>810108</td><td>한정현</td><td>3</td></tr>
+          <tr data-dept="뇌기반감정코칭학과" data-type="전공필수"><td>뇌기반감정코칭학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>명상과 심리치료</td><td>810102</td><td>한정현</td><td>3</td></tr>
+          <!-- 명상치료학과 -->
+          <tr data-dept="명상치료학과" data-type="전공필수"><td>명상치료학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>융합시대의 뇌교육 입문</td><td>401035</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="명상치료학과" data-type="전공필수"><td>명상치료학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>뇌교육의 이해</td><td>401004</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="명상치료학과" data-type="전공선택"><td>명상치료학과</td><td>1</td><td><span class="badge-elec">전공선택</span></td><td>두뇌의 구조와 기능론</td><td>900001</td><td>오창영</td><td>3</td></tr>
+          <tr data-dept="명상치료학과" data-type="전공필수"><td>명상치료학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>뇌교육 심화</td><td>401034</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="명상치료학과" data-type="전공필수"><td>명상치료학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>뇌교육 심화 II</td><td>401038</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="명상치료학과" data-type="전공선택"><td>명상치료학과</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>러브유어셀프 : 체인지 프로젝트</td><td>401041</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="명상치료학과" data-type="전공선택"><td>명상치료학과</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>멘탈헬스UP, 두뇌트레이닝</td><td>401047</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="명상치료학과" data-type="전공필수"><td>명상치료학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>두뇌의 구조와 기능론</td><td>900001</td><td>오창영</td><td>3</td></tr>
+          <tr data-dept="명상치료학과" data-type="전공선택"><td>명상치료학과</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>감정노동힐링365</td><td>401033</td><td>오창영</td><td>3</td></tr>
+          <tr data-dept="명상치료학과" data-type="전공선택"><td>명상치료학과</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>창의성과 문제해결</td><td>401036</td><td>오창영</td><td>3</td></tr>
+          <!-- 뇌교육학과 -->
+          <tr data-dept="뇌교육학과" data-type="전공필수"><td>뇌교육학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>엔터테인먼트 산업의 이해</td><td>203002</td><td>천범주</td><td>3</td></tr>
+          <tr data-dept="뇌교육학과" data-type="전공필수"><td>뇌교육학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>케이팝산업의 이해(구.연예프로듀서실무)</td><td>203021</td><td>천범주</td><td>3</td></tr>
+          <tr data-dept="뇌교육학과" data-type="전공선택"><td>뇌교육학과</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>K-프로듀서(한류를 만드는 사람들)</td><td>203029</td><td>천범주</td><td>3</td></tr>
+          <!-- 브레인트레이닝학과 -->
+          <tr data-dept="브레인트레이닝학과" data-type="전공필수"><td>브레인트레이닝학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>문화콘텐츠 산업론</td><td>201002</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="브레인트레이닝학과" data-type="전공필수"><td>브레인트레이닝학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>콘텐츠기획입문</td><td>201004</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="브레인트레이닝학과" data-type="전공필수"><td>브레인트레이닝학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>지역문화상품과 축제사례연구</td><td>201018</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="브레인트레이닝학과" data-type="전공필수"><td>브레인트레이닝학과</td><td>4</td><td><span class="badge-req">전공필수</span></td><td>한일 식문화 디자인 입문</td><td>202045</td><td>손애경</td><td>3</td></tr>
+          <!-- 방송연예학과 -->
+          <tr data-dept="방송연예학과" data-type="전공필수"><td>방송연예학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>실전영어회화</td><td>601004</td><td>윤경주</td><td>3</td></tr>
+          <tr data-dept="방송연예학과" data-type="전공필수"><td>방송연예학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>언어의 이해</td><td>601002</td><td>윤경주</td><td>3</td></tr>
+          <tr data-dept="방송연예학과" data-type="전공필수"><td>방송연예학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>문화간 의사소통기술</td><td>601008</td><td>윤경주</td><td>3</td></tr>
+          <!-- 미디어콘텐츠학과 -->
+          <tr data-dept="미디어콘텐츠학과" data-type="전공필수"><td>미디어콘텐츠학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>명리학총론</td><td>501002</td><td>박영창</td><td>3</td></tr>
+          <tr data-dept="미디어콘텐츠학과" data-type="전공선택"><td>미디어콘텐츠학과</td><td>1</td><td><span class="badge-elec">전공선택</span></td><td>삼명통회연구</td><td>501049</td><td>김미석</td><td>3</td></tr>
+          <tr data-dept="미디어콘텐츠학과" data-type="전공필수"><td>미디어콘텐츠학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>명리학적천수강해</td><td>501005</td><td>박영창</td><td>3</td></tr>
+          <tr data-dept="미디어콘텐츠학과" data-type="전공선택"><td>미디어콘텐츠학과</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>명리신살통변론</td><td>501047</td><td>김미석</td><td>3</td></tr>
+          <tr data-dept="미디어콘텐츠학과" data-type="전공필수"><td>미디어콘텐츠학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>현대명리학연구</td><td>501026</td><td>박영창</td><td>3</td></tr>
+          <tr data-dept="미디어콘텐츠학과" data-type="전공필수"><td>미디어콘텐츠학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>명리일주론</td><td>501045</td><td>김미석</td><td>3</td></tr>
+          <tr data-dept="미디어콘텐츠학과" data-type="전공선택"><td>미디어콘텐츠학과</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>명리비결연구</td><td>501031</td><td>김미석</td><td>3</td></tr>
+          <!-- 상담심리학과 -->
+          <tr data-dept="AI영어학과" data-type="전공선택"><td>AI영어학과 (상담심리학과)</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>인간중심 빅데이터</td><td>330119</td><td>석광호</td><td>3</td></tr>
+          <!-- 선도문화학과 -->
+          <tr data-dept="선도문화학과" data-type="전공필수"><td>선도문화학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>한국사의 이해 I</td><td>900024</td><td>민성욱</td><td>3</td></tr>
+          <tr data-dept="선도문화학과" data-type="전공필수"><td>선도문화학과</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>한국문화와 국학운동</td><td>900040</td><td>민성욱</td><td>3</td></tr>
+          <tr data-dept="선도문화학과" data-type="전공필수"><td>선도문화학과</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>한국선도의 역사와 문화</td><td>530306</td><td>민성욱</td><td>3</td></tr>
+          <tr data-dept="선도문화학과" data-type="전공필수"><td>선도문화학과</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>인간완성학</td><td>530313</td><td>민성욱</td><td>3</td></tr>
+          <!-- 사회복지학부 -->
+          <tr data-dept="사회복지학부" data-type="전공필수"><td>사회복지학부</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>사회복지정책론</td><td>101022</td><td>오화영</td><td>3</td></tr>
+          <!-- 스포츠건강학부 -->
+          <tr data-dept="스포츠건강학부" data-type="전공필수"><td>스포츠건강학부</td><td>1</td><td><span class="badge-req">전공필수</span></td><td>생활체조와 단전호흡</td><td>402008</td><td>이수경</td><td>3</td></tr>
+          <tr data-dept="스포츠건강학부" data-type="전공필수"><td>스포츠건강학부</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>건강생물학</td><td>402001</td><td>이수경</td><td>3</td></tr>
+          <tr data-dept="스포츠건강학부" data-type="전공선택"><td>스포츠건강학부</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>노인체육론</td><td>402021</td><td>이수경</td><td>3</td></tr>
+          <tr data-dept="스포츠건강학부" data-type="전공필수"><td>스포츠건강학부</td><td>4</td><td><span class="badge-req">전공필수</span></td><td>건강교육론</td><td>402026</td><td>이수경</td><td>3</td></tr>
+          <!-- AI융합학부 -->
+          <tr data-dept="AI융합학부" data-type="전공선택"><td>AI융합학부</td><td>1</td><td><span class="badge-elec">전공선택</span></td><td>메타버스 개론</td><td>330127</td><td>석광호</td><td>3</td></tr>
+          <tr data-dept="AI융합학부" data-type="전공필수"><td>AI융합학부</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>AI개론</td><td>330114</td><td>석광호</td><td>3</td></tr>
+          <tr data-dept="AI융합학부" data-type="전공필수"><td>AI융합학부</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>인간중심 빅데이터</td><td>330119</td><td>석광호</td><td>3</td></tr>
+          <tr data-dept="AI융합학부" data-type="전공선택"><td>AI융합학부</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>자료구조와 알고리즘</td><td>330138</td><td>박형용</td><td>3</td></tr>
+          <tr data-dept="AI융합학부" data-type="전공선택"><td>AI융합학부</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>빅데이터분석</td><td>330116</td><td>석광호</td><td>3</td></tr>
+          <tr data-dept="AI융합학부" data-type="전공선택"><td>AI융합학부</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>유니티 실무</td><td>330134</td><td>석광호</td><td>3</td></tr>
+          <tr data-dept="AI융합학부" data-type="전공선택"><td>AI융합학부</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>컴퓨터비전</td><td>330147</td><td>석광호</td><td>3</td></tr>
+          <!-- 교양학부 -->
+          <tr data-dept="교양학부" data-type="교양필수"><td>교양학부 (공통)</td><td>-</td><td><span class="badge-gyoyang-req">교양필수</span></td><td>지구경영으로의 초대</td><td>900020</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (인간과 사회)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>여성과 사회</td><td>101001</td><td>오화영</td><td>3</td></tr>
+          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (인간과 사회)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>평생교육론</td><td>401003</td><td>정봉영</td><td>3</td></tr>
+          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (인간과 사회)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>성인학습 및 상담</td><td>900010</td><td>정봉영</td><td>3</td></tr>
+          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (과학·기술·정보)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>디지털콘텐츠와 저작권</td><td>201015</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (역사·철학·문화)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>점성학</td><td>900072</td><td>조만섭</td><td>3</td></tr>
+          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (역사·철학·문화)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>대중문화와 예술</td><td>203005</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (역사·철학·문화)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>한국사의 이해 I</td><td>900024</td><td>민성욱</td><td>3</td></tr>
+          <tr data-dept="교양학부" data-type="교양선택"><td>교양학부 (글로벌 소양)</td><td>-</td><td><span class="badge-gyoyang">교양선택</span></td><td>대중문화 속 생활 한국어</td><td>900085</td><td>손애경</td><td>3</td></tr>
+          <!-- 연계전공 -->
+          <tr data-dept="연계전공" data-type="전공선택"><td>지구경영융합전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>AI개론</td><td>330114</td><td>석광호</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공필수"><td>지구경영융합전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>뇌교육의 이해</td><td>401004</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>지구경영융합전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>뇌교육 심화</td><td>401034</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>지구경영융합전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>러브유어셀프 : 체인지 프로젝트</td><td>401041</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공필수"><td>주류양조·소믈리에 융합전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>한일 식문화 디자인 입문</td><td>202045</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공필수"><td>주류양조·소믈리에 융합전공</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>지역문화상품과 축제사례연구</td><td>201018</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공필수"><td>치매전문케어 연계전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>상담심리학(구. 상담의 이론과 실제)</td><td>103038</td><td>고건영</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>치매전문케어 연계전공</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>뇌교육의 이해</td><td>401004</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>치매전문케어 연계전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>노인체육론</td><td>402021</td><td>이수경</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공필수"><td>글로벌K문화 연계전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>문화콘텐츠 산업론</td><td>201002</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>콘텐츠기획입문</td><td>201004</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>문화간 의사소통기술</td><td>601008</td><td>윤경주</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>한국사의 이해 I</td><td>900024</td><td>민성욱</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>실전영어회화</td><td>601004</td><td>윤경주</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공필수"><td>글로벌K문화 연계전공</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>지역문화상품과 축제사례연구</td><td>201018</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>대중문화 속 생활 한국어</td><td>900085</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>3</td><td><span class="badge-elec">전공선택</span></td><td>언어의 이해</td><td>601002</td><td>윤경주</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공필수"><td>글로벌K문화 연계전공</td><td>4</td><td><span class="badge-req">전공필수</span></td><td>대중문화와 예술</td><td>203005</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>글로벌K문화 연계전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>한국문화와 국학운동</td><td>900040</td><td>민성욱</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공필수"><td>AI콘텐츠 연계전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>콘텐츠기획입문</td><td>201004</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>AI콘텐츠 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>인간중심 빅데이터</td><td>330119</td><td>석광호</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>AI콘텐츠 연계전공</td><td>2</td><td><span class="badge-elec">전공선택</span></td><td>메타버스 개론</td><td>330127</td><td>석광호</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공필수"><td>AI콘텐츠 연계전공</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>디지털콘텐츠와 저작권</td><td>201015</td><td>손애경</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공필수"><td>AI콘텐츠 연계전공</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>AI개론</td><td>330114</td><td>석광호</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>AI콘텐츠 연계전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>유니티 실무</td><td>330134</td><td>석광호</td><td>3</td></tr>
+          <!-- 브레인아로마 연계전공 -->
+          <tr data-dept="연계전공" data-type="전공필수"><td>브레인아로마 연계전공</td><td>2</td><td><span class="badge-req">전공필수</span></td><td>뇌교육의 이해</td><td>401004</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공필수"><td>브레인아로마 연계전공</td><td>3</td><td><span class="badge-req">전공필수</span></td><td>두뇌의 구조와 기능론</td><td>900001</td><td>오창영</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>브레인아로마 연계전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>뇌교육 심화</td><td>401034</td><td>장래혁</td><td>3</td></tr>
+          <tr data-dept="연계전공" data-type="전공선택"><td>브레인아로마 연계전공</td><td>4</td><td><span class="badge-elec">전공선택</span></td><td>멘탈헬스UP, 두뇌트레이닝</td><td>401047</td><td>장래혁</td><td>3</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div id="noResult" style="display:none; text-align:center; padding:30px; color:var(--text-muted); font-size:14px;">
+        검색 결과가 없습니다.
+      </div>
+
     </div>
   </div>
+
+  <style>
+    .badge-req { background:#dbeafe; color:#1e40af; font-size:11px; font-weight:600; padding:2px 7px; border-radius:4px; white-space:nowrap; }
+    .badge-elec { background:#dcfce7; color:#166534; font-size:11px; font-weight:600; padding:2px 7px; border-radius:4px; white-space:nowrap; }
+    .badge-gyoyang-req { background:#fef9c3; color:#854d0e; font-size:11px; font-weight:600; padding:2px 7px; border-radius:4px; white-space:nowrap; }
+    .badge-gyoyang { background:#f3e8ff; color:#6b21a8; font-size:11px; font-weight:600; padding:2px 7px; border-radius:4px; white-space:nowrap; }
+    #courseTable tbody tr { transition: background 0.15s; }
+    #courseTable tbody tr:hover td { background: #f0f6ff; }
+    #courseSearch:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26,58,107,0.1); }
+  </style>
+
+  <script>
+    function filterCourses() {
+      const search = document.getElementById('courseSearch').value.toLowerCase();
+      const dept = document.getElementById('deptFilter').value;
+      const type = document.getElementById('typeFilter').value;
+      const rows = document.querySelectorAll('#courseBody tr');
+      let count = 0;
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        const rowDept = row.dataset.dept || '';
+        const rowType = row.dataset.type || '';
+        const matchSearch = !search || text.includes(search);
+        const matchDept = !dept || rowDept.includes(dept);
+        const matchType = !type || rowType === type;
+        if (matchSearch && matchDept && matchType) {
+          row.style.display = '';
+          count++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+      document.getElementById('courseCount').textContent = `총 ${count}개 과목 표시 중`;
+      document.getElementById('noResult').style.display = count === 0 ? 'block' : 'none';
+    }
+    // 초기 카운트
+    window.onload = () => filterCourses();
+  </script>
 
   <!-- 2. 수강신청 기간 -->
   <div class="section">
